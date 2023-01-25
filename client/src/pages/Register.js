@@ -1,7 +1,20 @@
 import signUp from '../assets/signUp.svg'
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
 const Register = () => {
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        if(!name || !email || !password){
+            alert("Missing field, Please fill out form completely")
+        }
+        console.log(name,email,password)
+    }
+    
     return (
       <div className="registerContainer">
           <div className="registerDivider">
@@ -14,18 +27,20 @@ const Register = () => {
   
           <div className="registerForm">
               <h2 className="registerTitle">Sign Up</h2>
-              <form className="register">
+              <form className="register" onSubmit={handleSubmit}>
                   <label> Name</label>
                   <br/>
-                  <input type="text"/>
+                  <input type="text" value={name} onChange={(e) => setName(e.target.value)}/>
                   <br/>
+
                   <label> Email</label>
                   <br/>
-                  <input type="email"/>
+                  <input type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
                   <br/>
+
                   <label>Password </label>
                   <br/>
-                  <input type="password"/>
+                  <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                   <br/>
 
                   <button className="registerBtn"> CREATE ACCOUNT</button>
@@ -37,5 +52,5 @@ const Register = () => {
         </div>
     )
   }
-  
+
   export default Register

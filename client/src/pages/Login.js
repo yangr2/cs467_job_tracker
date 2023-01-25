@@ -1,7 +1,19 @@
 import login from '../assets/login.svg'
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
 const Login = () => {
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        if(!email || !password){
+            alert("Missing field, Please fill out form completely")
+        }
+        console.log(email,password)
+    }
+
     return (
       <div className="loginContainer">
           <div className="loginDivider">
@@ -14,14 +26,15 @@ const Login = () => {
   
           <div className="loginForm">
               <h2 className="loginTitle">Login</h2>
-              <form className="login">
+              <form className="login" onSubmit={handleSubmit}>
                   <label> Email</label>
                   <br/>
-                  <input type="email"/>
+                  <input type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
                   <br/>
+
                   <label>Password </label>
                   <br/>
-                  <input type="password"/>
+                  <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                   <br/>
 
                   <button className="loginBtn"> LOGIN</button>
