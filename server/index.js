@@ -5,6 +5,8 @@ const cors = require('cors');
 // routes
 const positions = require('./routes/api/positions');
 
+const registerUsers = require('./routes/api/registerUsers');
+
 const app = express();
 
 // Connect Database
@@ -22,6 +24,8 @@ app.get("/", (req, res) => {
 
 // use Routes
 app.use('/api/positions', positions);
+
+app.use('/api/registerUsers', registerUsers);
 
 const port = process.env.PORT || 8080;
 
