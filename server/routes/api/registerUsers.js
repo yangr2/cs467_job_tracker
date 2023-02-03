@@ -7,6 +7,9 @@ const router = express.Router();
 // Load User model
 const User = require('../../models/User');
 
+// Constant for minimum password length 
+const minlength = 5; 
+
 // @route GET api/registerUsers/test
 // @description tests register route
 // @access Public
@@ -22,6 +25,10 @@ router.post('/register', async (req, res) => {
         const userExists = await User.findOne({ email });
 
         if (userExists) return res.status(400).json({ message: "User already exists."});
+
+        if (!password || password.length < minlength) {
+            return res.status(400).json({ message: "Password is required and must be at least longer than 5 characters"})
+        }
 
         const hiddenPassword = await bcrypt.hash(password, 12); 
 
