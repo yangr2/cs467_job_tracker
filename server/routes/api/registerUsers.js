@@ -34,7 +34,7 @@ router.post('/register', async (req, res) => {
 
         const newUser = await User.create({ name, email, password: hiddenPassword });
 
-        res.status(200).json({name, email, password })
+        res.status(200).json({ name, email, password, message: "User registration successful!" })
 
     } catch (error) {
         if (error.name === 'ValidationError') {
