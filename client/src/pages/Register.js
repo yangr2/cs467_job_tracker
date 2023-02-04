@@ -13,9 +13,11 @@ const Register = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+
         if(!name || !email || !password){
             alert("Missing field, Please fill out form completely")
         }
+        
         Axios.post(process.env.REACT_APP_API_ADDRESS + "/api/registerUsers/register",{
         name: name,
         email: email,
