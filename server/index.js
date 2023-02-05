@@ -7,6 +7,8 @@ const positions = require('./routes/api/positions');
 
 const registerUsers = require('./routes/api/registerUsers');
 
+const loginUsers = require('./routes/api/loginUsers');
+
 const app = express();
 
 // Connect Database
@@ -26,6 +28,8 @@ app.get("/", (req, res) => {
 app.use('/api/positions', positions);
 
 app.use('/api/registerUsers', registerUsers);
+
+app.use('/api/loginUsers', loginUsers);
 
 const port = process.env.PORT || 8080;
 
