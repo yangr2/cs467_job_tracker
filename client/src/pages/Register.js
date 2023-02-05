@@ -1,18 +1,35 @@
 import signUp from '../assets/signUp.svg'
-import { Link } from 'react-router-dom'
+import { Link , useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import Axios from 'axios'
+
 
 const Register = () => {
+    const navigate = useNavigate()
+
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
+
         if(!name || !email || !password){
             alert("Missing field, Please fill out form completely")
         }
-        console.log(name,email,password)
+        
+        Axios.post(process.env.REACT_APP_API_ADDRESS + "/api/registerUsers/register",{
+        name: name,
+        email: email,
+        password: password,
+        }).then((response) => {
+            localStorage.setItem('user', JSON.stringify(response.data))
+            alert("Successfully Created an Account")
+            navigate('/login')
+
+        }).catch((error) => {
+            alert(JSON.stringify(error.response.data.message))
+        })
     }
     
     return (

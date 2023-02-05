@@ -27,14 +27,14 @@ router.post('/register', async (req, res) => {
         if (userExists) return res.status(400).json({ message: "User already exists."});
 
         if (!password || password.length < minlength) {
-            return res.status(400).json({ message: "Password is required and must be at least longer than 5 characters"})
+            return res.status(400).json({ message: "Password is required and must be at least 5 characters"})
         }
 
         const hiddenPassword = await bcrypt.hash(password, 12); 
 
         const newUser = await User.create({ name, email, password: hiddenPassword });
 
-        res.status(200).json({ message: "User registration successful!" })
+        res.status(200).json({ name, email, password, message: "User registration successful!" })
 
     } catch (error) {
         if (error.name === 'ValidationError') {
