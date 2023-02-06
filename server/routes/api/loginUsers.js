@@ -21,23 +21,23 @@ router.post('/login', async (req, res) => {
 		return res.status(400).json('no email or no password given');
 	}
     try {
-        const user = User.findOne({ email });
+        const user = await User.findOne({ email });
         // If a user was found
         if (user) {
-            const validPassword = bcrypt.compareSync(password, user.password);
+            const validPassword = bcrypt.compare(password, user.password);
             // user was found with its valid password
             if(validPassword){
                 const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {expiresIn: "30m"});
                 // res.header("auth-token", token).send({"token": token});
-                res.status(200).json({ message: "Succesfully login into application"})
-                return res.json({ user, token })
+                // return res.status(200).json({ user, token })
+                return res.status(200).json(user);
             }
             else {
-                return res.status(400).json('invalid password')
+                return res.status(400).json('invalid password');
             }
         }
         else {
-            return res.status(400).json('could not find user in system')
+            return res.status(400).json('could not find user in system');
         }
     }
     catch (error) {
