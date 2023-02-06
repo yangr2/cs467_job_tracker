@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require("bcryptjs");
+const jwt = require('jsonwebtoken')
 
 // Load user model
 const User = require('../../models/User');
@@ -26,8 +27,10 @@ router.post('/login', async (req, res) => {
             const validPassword = bcrypt.compareSync(password, user.password);
             // user was found with its valid password
             if(validPassword){
+                const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {expiresIn: "30m"});
+                // res.header("auth-token", token).send({"token": token});
                 res.status(200).json({ message: "Succesfully login into application"})
-                return res.json(user)
+                return res.json({ user, token })
             }
             else {
                 return res.status(400).json('invalid password')
