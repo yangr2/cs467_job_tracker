@@ -24,12 +24,12 @@ router.post('/login', async (req, res) => {
         const user = await User.findOne({ email });
         // If a user was found
         if (user) {
-            const validPassword = bcrypt.compare(password, user.password);
+            const validPassword = bcrypt.compareSync(password, user.password);
             // user was found with its valid password
             if(validPassword){
-                const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {expiresIn: "30m"});
-                // res.header("auth-token", token).send({"token": token});
-                // return res.status(200).json({ user, token })
+                req.session.user = user;
+                req.session.authorized = true;
+                console.log(req.session)
                 return res.status(200).json(user);
             }
             else {
