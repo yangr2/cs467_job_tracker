@@ -4,11 +4,9 @@ const cors = require('cors');
 const session = require('express-session');
 
 // routes
-const positions = require('./routes/api/positions');
-
 const registerUsers = require('./routes/api/registerUsers');
-
 const loginUsers = require('./routes/api/loginUsers');
+const userInfo = require('./routes/api/userInfo');
 
 const app = express();
 
@@ -33,17 +31,10 @@ app.get("/", (req, res) => {
 });
 
 // use Routes
-app.use('/api/positions', positions);
-
 app.use('/api/registerUsers', registerUsers);
-
 app.use('/api/loginUsers', loginUsers);
+app.use('/api/userInfo', userInfo);
 
-// testing sessions
-app.get('/logout', (req,res) => {
-  req.session.destroy((err)=>{})
-  res.send('You are logged out!')
-})
 const port = process.env.PORT || 8080;
 
 app.listen(port, () => {
