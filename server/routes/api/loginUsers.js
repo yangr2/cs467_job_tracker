@@ -13,7 +13,7 @@ router.post('/login', async (req, res) => {
 	const { email, password } = req.body;
     // check if password or email is not empty, null or undefined
 	if (!password || !email) {
-		return res.status(401).json({message: 'no email or no password given'});
+		return res.status(401).json({message: 'No email or no password given'});
 	}
     try {
         const user = await User.findOne({ email });
@@ -43,7 +43,7 @@ router.post('/login', async (req, res) => {
             }
         }
         else {
-            return res.status(401).json({message: 'could not find user in system'});
+            return res.status(401).json({message: 'Could not find user in system'});
         }
     }
     catch (error) {

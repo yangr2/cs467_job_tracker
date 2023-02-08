@@ -42,7 +42,7 @@ const Login = () => {
             alert("Successfully logged in")
             navigate('/jobs')
         }).catch((error) => {
-            console.log(JSON.stringify(error.response.data))
+            alert(error.response.data.message)
         })
     }
 

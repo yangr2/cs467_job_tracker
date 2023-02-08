@@ -12,8 +12,6 @@ const Navbar = () => {
       Axios.defaults.headers.common['Authorization'] = token;
       Axios.get(process.env.REACT_APP_API_ADDRESS + "/api/userinfo/auth")
       .then((response) => {
-          // Redirect User to jobs page is already logged in
-          // Otherwise continue render this page
           if(response.data.loggedIn) {
               setUser(response.data)
           }
