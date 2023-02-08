@@ -1,12 +1,15 @@
 import login from '../assets/login.svg'
 import { Link, useNavigate } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext} from 'react'
 import Axios from 'axios'
+import { AuthContext } from '../context/AuthUser'
 
 const Login = () => {
     const navigate = useNavigate()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
+    const {setUser} = useContext(AuthContext)
 
     useEffect(() => {
         const token = localStorage.getItem('jwtToken')
@@ -16,6 +19,7 @@ const Login = () => {
             // Redirect User to jobs page is already logged in
             // Otherwise continue render this page
             if(response.data.loggedIn) {
+                setUser(response.data)
                 navigate('/jobs');
             }
         }).catch((error) => {
@@ -32,13 +36,13 @@ const Login = () => {
             email: email,
             password: password,
         }).then((response) => {
-            //setUser(response.data)
+            setUser(response.data.email)
             localStorage.setItem('jwtToken', response.data.token)
             Axios.defaults.headers.common['Authorization'] = response.data.token
             alert("Successfully logged in")
             navigate('/jobs')
         }).catch((error) => {
-            console.log(JSON.stringify(error.response.data))
+            alert(error.response.data.message)
         })
     }
 

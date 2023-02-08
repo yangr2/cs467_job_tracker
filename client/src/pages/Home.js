@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from "react";
-import {Link} from 'react-router-dom'
+import Navbar from "../components/Navbar";
 
 const Home = () => {
     return (
-      <div className="App">
-        <h1>HOME PAGE </h1>
-        <Link to="/login"> Login</Link>
-        <br></br>
-        <Link to="/register">Sign Up</Link>
+      <div>
+         <Navbar/>
+         <h1>Home Page</h1>
       </div>
     );
 }
