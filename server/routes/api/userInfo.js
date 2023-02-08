@@ -11,6 +11,7 @@ router.get('/auth', async (req, res) => {
         return res.status(200).json({
             loggedIn: true,
             userId: data.userId,
+            email: data.email,
         });
       } else {
         return res.status(200).json({

@@ -23,7 +23,6 @@ const Register = () => {
         email: email,
         password: password,
         }).then((response) => {
-            localStorage.setItem('user', JSON.stringify(response.data))
             alert("Successfully Created an Account")
             navigate('/login')
 
