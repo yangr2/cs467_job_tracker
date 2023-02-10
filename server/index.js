@@ -7,7 +7,7 @@ const positions = require('./routes/api/positions');
 
 const registerUsers = require('./routes/api/registerUsers');
 
-const jobDetails = require('./routes/api/jobDetails');
+const jobs = require('./routes/api/jobs');
 
 const app = express();
 
@@ -28,6 +28,8 @@ app.get("/", (req, res) => {
 app.use('/api/positions', positions);
 
 app.use('/api/registerUsers', registerUsers);
+
+app.use('/api/jobs', jobs);
 
 // app.use('api/jobDetails', jobDetails)
 
