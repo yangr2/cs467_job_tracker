@@ -1,17 +1,49 @@
 import login from '../assets/login.svg'
-import { Link } from 'react-router-dom'
-import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { useState, useEffect, useContext} from 'react'
+import Axios from 'axios'
+import { AuthContext } from '../context/AuthUser'
 
 const Login = () => {
+    const navigate = useNavigate()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
+    const {setUser} = useContext(AuthContext)
+
+    useEffect(() => {
+        const token = localStorage.getItem('jwtToken')
+        Axios.defaults.headers.common['Authorization'] = token;
+        Axios.get(process.env.REACT_APP_API_ADDRESS + "/api/userinfo/auth")
+        .then((response) => {
+            // Redirect User to jobs page is already logged in
+            // Otherwise continue render this page
+            if(response.data.loggedIn) {
+                setUser(response.data)
+                navigate('/jobs');
+            }
+        }).catch((error) => {
+            console.log(error)
+        })
+    });
 
     const handleSubmit = (e) => {
         e.preventDefault()
         if(!email || !password){
             alert("Missing field, Please fill out form completely")
         }
-        console.log(email,password)
+        Axios.post(process.env.REACT_APP_API_ADDRESS + "/api/loginUsers/login",{
+            email: email,
+            password: password,
+        }).then((response) => {
+            setUser(response.data.email)
+            localStorage.setItem('jwtToken', response.data.token)
+            Axios.defaults.headers.common['Authorization'] = response.data.token
+            alert("Successfully logged in")
+            navigate('/jobs')
+        }).catch((error) => {
+            alert(error.response.data.message)
+        })
     }
 
     return (
