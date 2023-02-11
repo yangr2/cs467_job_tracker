@@ -86,3 +86,26 @@ code {
   margin-top: 100px;
 }
 
+/* Styling the Navbar */ 
+.navBar{
+  display: flex;
+  width: 100%;
+
+}
+
+.navBar h2{
+  margin-right: 100px;
+  display: inline-block;
+}
+
+.navBar a{
+  margin: 15px;
+  display: inline-block;
+}
+
+.navBar button{
+  border: none;
+  height: 30px;
+  display: inline-block;
+  cursor: pointer;
+}

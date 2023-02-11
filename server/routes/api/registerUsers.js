@@ -22,13 +22,13 @@ router.post('/register', async (req, res) => {
     const { name, email, password } = req.body;
 
     try {
+        if (!email || !name || !password || password.length < minlength) {
+            return res.status(401).json({ message: "Missing required field(s) or Password less than 5 characters"})
+        }
+
         const userExists = await User.findOne({ email });
 
-        if (userExists) return res.status(400).json({ message: "User already exists."});
-
-        if (!password || password.length < minlength) {
-            return res.status(400).json({ message: "Password is required and must be at least 5 characters"})
-        }
+        if (userExists) return res.status(401).json({ message: "User already exists."});
 
         const hiddenPassword = await bcrypt.hash(password, 12); 
 
@@ -38,7 +38,7 @@ router.post('/register', async (req, res) => {
 
     } catch (error) {
         if (error.name === 'ValidationError') {
-            res.status(400).json(Object.values(error.errors).map(val => val.message));
+            res.status(401).json(Object.values(error.errors).map(val => val.message));
         }
         else {
             res.status(500).json({ message: 'Error: User was not able to register.' });
