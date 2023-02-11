@@ -8,6 +8,8 @@ const registerUsers = require('./routes/api/registerUsers');
 const loginUsers = require('./routes/api/loginUsers');
 const userInfo = require('./routes/api/userInfo');
 
+const jobs = require('./routes/api/jobs');
+
 const app = express();
 
 // Connect Database
@@ -34,6 +36,7 @@ app.get("/", (req, res) => {
 app.use('/api/registerUsers', registerUsers);
 app.use('/api/loginUsers', loginUsers);
 app.use('/api/userInfo', userInfo);
+app.use('/api/jobs', jobs);
 
 const port = process.env.PORT || 8080;
 
