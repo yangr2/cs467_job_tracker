@@ -36,6 +36,7 @@ app.get("/", (req, res) => {
 app.use('/api/registerUsers', registerUsers);
 app.use('/api/loginUsers', loginUsers);
 app.use('/api/userInfo', userInfo);
+app.use('/api/jobs', jobs);
 
 app.use('/api/jobs', jobs);
 
