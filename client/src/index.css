@@ -109,3 +109,104 @@ code {
   display: inline-block;
   cursor: pointer;
 }
+
+/* Styling for Jobs Page */
+.jobsTable{
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 1000px;
+  height: 500px;
+}
+
+.addJobBtn{
+  display: inline-block;
+  float: right;
+  background-color: #3073A4;
+  color:white;
+  cursor: pointer;
+  border: none;
+  width: 110px;
+  height: 30px;
+}
+
+.jobsContainer h3{
+  display: inline;
+  font-size: 25px;
+}
+
+table {
+  width:100%;
+  white-space: nowrap;
+  margin-top: 40px;
+}
+
+.jobsTable th {
+  background-color: #E5E7EB;
+}
+
+.cancelModal, .cancelEditModal{
+  float:right;
+  border:none;
+  background: none;
+  color:white;
+  cursor: pointer;
+  font-size: 15px;
+  margin-top: 5px;
+  margin-right: 5px;
+  font-weight: bolder;
+
+}
+
+.addJobModal, .editJobModal{
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 600px;
+  height: 550px;
+  z-index: 100;
+  background-color: #3073A4;
+  color:white;
+  text-align: center;
+}
+
+.addJob input , .editJob input{
+  margin-bottom: 10px;
+  margin-top:10px;
+  width: 300px;
+  height: 20px;
+  border:none;
+  text-align: center;
+}
+
+.addJob, .editJob{
+    display: inline-block;
+    text-align: left;
+}
+
+.addJobTitle{
+  text-align: center;
+  margin-left: 80px;
+}
+
+.editJobTitle{
+  text-align: center;
+  margin-left: 100px;
+}
+
+.createJobBtn, .editJobBtn{
+  text-align: center;
+  width:300px;
+  margin-top: 20px;
+  height: 25px;
+  border-radius: 5px;
+  border:none;
+  background-color: white;
+  cursor:pointer;
+}
