@@ -31,7 +31,7 @@ const Jobs = () => {
 
     const [jobs, setJobs] = useState([])
 
-    useEffect(() => {
+   const fetchJobs = () => {
       const token = localStorage.getItem('jwtToken')
       Axios.defaults.headers.common['Authorization'] = token;
       Axios.get(process.env.REACT_APP_API_ADDRESS + "/api/userinfo/auth")
@@ -51,8 +51,10 @@ const Jobs = () => {
       }).catch((error) => {
           console.log(error)
       })
-    },[]);
-
+    }
+    useEffect(() => {
+      fetchJobs()
+    }, [jobs])
 
      // Handle Submit for Add Job Form
      const handleSubmit = async (e) => {
@@ -71,7 +73,6 @@ const Jobs = () => {
           skills: skills,
           status: status,
           }).then((response) => {
-              console.log(response.data)
               alert("Job created successfully")
 
               setJobTitle('')
@@ -118,7 +119,6 @@ const Jobs = () => {
         skills: editSkills,
         status: editStatus,
         }).then((response) => {
-            console.log(response.data)
             alert("Job edited successfully")
 
         }).catch((error) => {
