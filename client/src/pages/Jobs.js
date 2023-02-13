@@ -49,7 +49,7 @@ const Jobs = () => {
       }).catch((error) => {
           console.log(error)
       })
-  });
+    });
 
 
      // Handle Submit for Add Job Form
@@ -60,34 +60,33 @@ const Jobs = () => {
       if(!jobTitle || !company || !jobType || !location || !dateApplied || !skills || !status){
           alert("Missing Field, Please fill out all fields")
       }else{
+        Axios.post(process.env.REACT_APP_API_ADDRESS + "/api/jobs/" + user.userId ,{
+          job_title: jobTitle,
+          company: company,
+          job_type: jobType,
+          location: location,
+          application_date: dateApplied,
+          skills: skills,
+          status: status,
+          }).then((response) => {
+              console.log(response.data)
+              alert("Job created successfully")
 
-      Axios.post(process.env.REACT_APP_API_ADDRESS + "/api/jobs/" + user.userId ,{
-        job_title: jobTitle,
-        company: company,
-        job_type: jobType,
-        location: location,
-        application_date: dateApplied,
-        skills: skills,
-        status: status,
-        }).then((response) => {
-            console.log(response.data)
-            alert("Job created successfully")
+              setJobTitle('')
+              setCompany('')
+              setJobType('')
+              setLocation('')
+              setDateApplied('')
+              setSkills('')
+              setStatus('')
 
-            setJobTitle('')
-            setCompany('')
-            setJobType('')
-            setLocation('')
-            setDateApplied('')
-            setSkills('')
-            setStatus('')
-
-        }).catch((error) => {
-          alert(JSON.stringify(error.response.data.message))
-        })
+          }).catch((error) => {
+            alert(JSON.stringify(error.response.data.message))
+          })
       }
     }
 
-     // Handler for Editing Jobs
+     // Handler for Editing Jobs (autofill edit input fields)
      const handleEdit = (id) => {
       setEditModal(true)
       const editJobs = jobs.find(job => (job._id === id))
@@ -101,7 +100,6 @@ const Jobs = () => {
             setEditStatus(editJobs.status)
             setEditID(editJobs._id)
         }
-     
     }
 
     // Handler for submitting edited job posts
@@ -121,8 +119,6 @@ const Jobs = () => {
             console.log(response.data)
             alert("Job edited successfully")
 
-            
-
         }).catch((error) => {
           alert(JSON.stringify(error.response.data.message))
         })
@@ -132,7 +128,6 @@ const Jobs = () => {
     const handleDelete =  (id) => {
       Axios.delete(process.env.REACT_APP_API_ADDRESS + "/api/jobs/" + user.userId + "/" + id).then((response) => {
             alert(JSON.stringify(response.data.message))
-
         }).catch((error) => {
           alert(JSON.stringify(error.response.data.message))
         })
@@ -147,7 +142,7 @@ const Jobs = () => {
               <button className="addJobBtn" onClick={() => {setAddModal(true)}}> + Add New Job</button>
               <table>
                 <thead>
-                <tr>
+                  <tr>
                       <th>Job Title</th>
                       <th>Company</th>
                       <th>Job Type</th>
@@ -158,27 +153,23 @@ const Jobs = () => {
                       <th></th>
                       <th></th>
                   </tr>
-
                 </thead>
                   
-                  <tbody>
+                <tbody>
                   {jobs.map((job) => (
-                    <tr key={job._id}>
-                    <td>{job.job_title}</td>
-                    <td>{job.company}</td>
-                    <td>{job.job_type}</td>
-                    <td>{job.location}</td>
-                    <td>{job.application_date}</td>
-                    <td>{job.skills}</td>
-                    <td>{job.status}</td>
-                    <td> <button onClick={() => handleEdit(job._id)}> EDIT</button> </td>
-                    <td> <button onClick={() => handleDelete(job._id)}>DELETE</button></td>
+                      <tr key={job._id}>
+                      <td>{job.job_title}</td>
+                      <td>{job.company}</td>
+                      <td>{job.job_type}</td>
+                      <td>{job.location}</td>
+                      <td>{job.application_date}</td>
+                      <td>{job.skills}</td>
+                      <td>{job.status}</td>
+                      <td> <button onClick={() => handleEdit(job._id)} className="editJobButton"><i class="fa-solid fa-pen-to-square"></i> </button> </td>
+                      <td> <button onClick={() => handleDelete(job._id)} className="deleteJobButton"><i class="fa-solid fa-trash"></i></button></td>
                     </tr>
-                ))}
-
-
-                  </tbody>
-                      
+                  ))}
+               </tbody>
               </table>
           </div>
 

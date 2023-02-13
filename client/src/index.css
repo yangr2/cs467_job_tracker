@@ -295,3 +295,13 @@ table {
   cursor:pointer;
 
 }
+
+.editJobButton, .deleteJobButton{
+  border: none;
+  background-color: white;
+  cursor:pointer;
+}
+
+.editJobButton i , .deleteJobButton i{
+  font-size: 15px;
+}

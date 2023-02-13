@@ -47,6 +47,7 @@ const Navbar = () => {
              <li className="navItem">
               <Link className="homeButton" to="/">HOME</Link>
              </li>
+
              <li className="navItem">
               <Link className="jobButton"to="/jobs">JOBS</Link>
              </li>
@@ -54,10 +55,8 @@ const Navbar = () => {
           )}
          
           {/* If a user is not logged in, display login & register button */}
-
           {!username && (
           <>
-              
               <li className="navItem">
               <div className="loginButtonContainer">
               <Link className="loginButton" to="/login"> LOGIN</Link>
