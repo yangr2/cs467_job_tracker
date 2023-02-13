@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const jwt = require('jsonwebtoken');
 const jwt = require('jsonwebtoken')
 
 // Load Job Position model
@@ -15,7 +16,7 @@ const authUser = (req) => {
     const privateKey = "thisIsMySecret!";
     const token = req.headers['authorization'];
     if (typeof token !=='undefined') {
-        jwt.verify(token, privateKey, function (err,data){
+        return jwt.verify(token, privateKey, function (err,data){
         if(!(err && typeof data === 'undefined')) {
             return {
                 loggedIn: true,
