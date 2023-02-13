@@ -58,6 +58,24 @@ const validateRequestData = (req) => {
     return {isValid:true};
 }
 
+// @route GET api/jobs/:user_id
+// @description Get all job positions for a single user id
+// @access private
+router.get('/:user_id', async (req, res) => {
+    const authData = authUser(req);
+    if (!authData.loggedIn || authData.userId !== req.params.user_id) {
+        // Skip token check for now until front end finish
+        // return res.status(401).json({ message: "Request Unauthorize"});
+    }
+    try {
+        const jobList  = await Job.find({ 'user_id': req.params.user_id })
+        res.json(jobList);
+
+    } catch (error) {
+        res.status(500).json({ error: "Could not get job position details" });
+    }
+});
+
 // @route GET api/jobs/:user_id/:id
 // @description Get single job position details by id
 // @access private
