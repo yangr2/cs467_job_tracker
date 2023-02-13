@@ -65,7 +65,7 @@ router.get('/:user_id', async (req, res) => {
     const authData = authUser(req);
     if (!authData.loggedIn || authData.userId !== req.params.user_id) {
         // Skip token check for now until front end finish
-        return res.status(401).json({ message: "Request Unauthorize"});
+        // return res.status(401).json({ message: "Request Unauthorize"});
     }
     try {
         const jobList  = await Job.find({ 'user_id': req.params.user_id })
