@@ -38,10 +38,6 @@ app.use('/api/loginUsers', loginUsers);
 app.use('/api/userInfo', userInfo);
 app.use('/api/jobs', jobs);
 
-app.use('/api/jobs', jobs);
-
-// app.use('api/jobDetails', jobDetails)
-
 const port = process.env.PORT || 8080;
 
 app.listen(port, () => {
