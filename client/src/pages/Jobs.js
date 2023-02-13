@@ -4,7 +4,7 @@ import Axios from 'axios'
 import { AuthContext } from "../context/AuthUser";
 
 const Jobs = () => {
-    const {user, setUser} = useContext(AuthContext)
+    const {user} = useContext(AuthContext)
 
     // UseStates for modal boxes for Add Job & Edit Modal
     const [addModal, setAddModal] = useState(false)
@@ -35,10 +35,7 @@ const Jobs = () => {
       // Error Handling if fields are missing
       if(!jobTitle || !company || !jobType || !location || !dateApplied || !skills || !status){
           alert("Missing Field, Please fill out all fields")
-      }
-      console.log(jobTitle, company, jobType, location, dateApplied, skills, status)
-
-      console.log(user.userId)
+      }else{
 
       Axios.post(process.env.REACT_APP_API_ADDRESS + "/api/jobs/" + user.userId ,{
         job_title: jobTitle,
@@ -49,11 +46,21 @@ const Jobs = () => {
         skills: skills,
         status: status,
         }).then((response) => {
-            console.log(response)
+            console.log(response.data)
+            alert("Job created successfully")
+
+            setJobTitle('')
+            setCompany('')
+            setJobType('')
+            setLocation('')
+            setDateApplied('')
+            setSkills('')
+            setStatus('')
 
         }).catch((error) => {
-            console.log(error)
+          alert(JSON.stringify(error.response.data.message))
         })
+      }
     }
 
      // Handler for Editing Jobs
@@ -70,11 +77,9 @@ const Jobs = () => {
 
     // Handler for deleting job
     const handleDelete =  () => {
-
       console.log("Successfully deleted")
     }
     
- 
   return (
     <div>
          <Navbar />

@@ -58,7 +58,7 @@ const validateRequestData = (req) => {
     return {isValid:true};
 }
 
-// @route GET api/jobDetails/:user_id/:id
+// @route GET api/jobs/:user_id/:id
 // @description Get single job position details by id
 // @access private
 router.get('/:user_id/:id', async (req, res) => {
