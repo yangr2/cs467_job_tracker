@@ -38,7 +38,6 @@ const Jobs = () => {
       .then((response) => {
           if(response.data.loggedIn) {
               setUser(response.data)
-             
               Axios.get(process.env.REACT_APP_API_ADDRESS + "/api/jobs/" + response.data.userId)
               .then((response) => {
                 setJobs(response.data)
@@ -46,10 +45,13 @@ const Jobs = () => {
                   console.log(error)
               })
           }
+          if(!response.data.loggedIn){
+            setUser(null)
+          }
       }).catch((error) => {
           console.log(error)
       })
-    });
+    },[]);
 
 
      // Handle Submit for Add Job Form
