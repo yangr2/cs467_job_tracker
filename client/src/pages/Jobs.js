@@ -1,7 +1,10 @@
 import Navbar from "../components/Navbar"
-import { useState } from 'react'
+import { useState , useContext } from 'react'
+import Axios from 'axios'
+import { AuthContext } from "../context/AuthUser";
 
 const Jobs = () => {
+    const {user, setUser} = useContext(AuthContext)
 
     // UseStates for modal boxes for Add Job & Edit Modal
     const [addModal, setAddModal] = useState(false)
@@ -26,13 +29,31 @@ const Jobs = () => {
     const [editStatus, setEditStatus] = useState('')
     
      // Handle Submit for Add Job Form
-     const handleSubmit = (e) => {
+     const handleSubmit = async (e) => {
       e.preventDefault()
+      
       // Error Handling if fields are missing
       if(!jobTitle || !company || !jobType || !location || !dateApplied || !skills || !status){
           alert("Missing Field, Please fill out all fields")
       }
       console.log(jobTitle, company, jobType, location, dateApplied, skills, status)
+
+      console.log(user.userId)
+
+      Axios.post(process.env.REACT_APP_API_ADDRESS + "/api/jobs/" + user.userId ,{
+        job_title: jobTitle,
+        company: company,
+        job_type: jobType,
+        location: location,
+        application_date: dateApplied,
+        skills: skills,
+        status: status,
+        }).then((response) => {
+            console.log(response)
+
+        }).catch((error) => {
+            console.log(error)
+        })
     }
 
      // Handler for Editing Jobs
@@ -42,15 +63,14 @@ const Jobs = () => {
     }
 
     // Handler for submitting edited job posts
-    const editJobHandler = (e) => {
-      e.preventDefault()
+    const editJobHandler = () => {
       setEditModal(false)
 
     }
 
     // Handler for deleting job
-    const handleDelete =  (e) => {
-      e.preventDefault()
+    const handleDelete =  () => {
+
       console.log("Successfully deleted")
     }
     

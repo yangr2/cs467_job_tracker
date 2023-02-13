@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const jwt = require('jsonwebtoken')
 
 // Load Job Position model
 const Job = require('../../models/Job');
@@ -63,7 +64,7 @@ router.get('/:user_id/:id', async (req, res) => {
     const authData = authUser(req);
     if (!authData.loggedIn || authData.userId !== req.params.user_id) {
         // Skip token check for now until front end finish
-        // return res.status(401).json({ message: "Request Unauthorize"});
+        return res.status(401).json({ message: "Request Unauthorize"});
     }
     try {
         const job = await Job.findOne({
@@ -85,7 +86,7 @@ router.post('/:user_id', async (req, res) => {
     const authData = authUser(req);
     if (!authData.loggedIn || authData.userId !== req.params.user_id) {
         // Skip token check for now until front end finish
-        //return res.status(401).json({ message: "Request Unauthorize"});
+        return res.status(401).json({ message: "Request Unauthorize"});
     }
     // check if request containes all required fields
     try {
@@ -106,7 +107,7 @@ router.post('/:user_id', async (req, res) => {
         const newJob = await Job.create(body)
         res.status(200).json(newJob);
 
-    } catch (error) {
+    }catch (error) {
         res.status(500).json({ message: "Job creation failed!"});
     }
 });
@@ -119,7 +120,7 @@ router.delete('/:user_id/:id', async (req, res) => {
     const authData = authUser(req);
     if (!authData.loggedIn || authData.userId !== req.params.user_id) {
         // Skip token check for now until front end finish
-        //return res.status(401).json({ message: "Request Unauthorize"});
+        return res.status(401).json({ message: "Request Unauthorize"});
     }
     try {
         let result = await Job.findByIdAndRemove(req.params.id);
@@ -141,7 +142,7 @@ router.put('/:user_id/:id', async (req, res) => {
     const authData = authUser(req);
     if (!authData.loggedIn || authData.userId !== req.params.user_id) {
         // Skip token check for now until front end finish
-        //return res.status(401).json({ message: "Request Unauthorize"});
+        return res.status(401).json({ message: "Request Unauthorize"});
     }
     try {
         const validateResult = validateRequestData(req);
