@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
-const jwt = require('jsonwebtoken')
+
 
 // Load Job Position model
 const Job = require('../../models/Job');
