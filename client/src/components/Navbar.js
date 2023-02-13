@@ -34,29 +34,52 @@ const Navbar = () => {
 
   return (
     <nav className='navBar'>
-       
+
+      <div className="navContainer">
+        <div className="navLogo">
         <h1> Job Tracker</h1>
-        <Link to="/">Home</Link>
-        
-        <Link to="/jobs">Jobs</Link>
-        
-        {/* If a user is not logged in, display login & register button */}
+        </div>
+        <div className="navMenuContainer">
+        <ul className="navMenu">
+          <li className="navItem">
+          <Link className="homeButton" to="/">HOME</Link>
+          </li>
+          <li className="navItem">
+          <Link className="jobButton"to="/jobs">JOBS</Link>
+          </li>
+          {/* If a user is not logged in, display login & register button */}
 
-        {!username && (
-        <>
-            <Link to="/login"> Login</Link>
-           
-            <Link to="/register">Sign Up</Link>
-        </>
-        )}
+          {!username && (
+          <>
+              
+              <li className="navItem">
+              <div className="loginButtonContainer">
+              <Link className="loginButton" to="/login"> LOGIN</Link>
+              </div>
+              </li>
+              <li className="navItem">
+              <div className="registerButtonContainer">
+              <Link className="registerButton" to="/register">REGISTER</Link>
+              </div>
+              </li>
+          </>
+          )}
 
-        {/* If a user is logged in, display email & logout button */}
-        {username && (
-        <>
-            <p>{username}</p>
-            <button onClick={handleLogOut}>Logout</button>
-        </>)}
-        
+          {/* If a user is logged in, display email & logout button */}
+          {username && (
+          <>
+              <li className="navItem">
+              <p>{username}</p>
+              </li>
+              <li className="navItem">
+              <div className="buttonContainer">
+              <button className="logoutButton" onClick={handleLogOut}>SIGN OUT</button>
+              </div>
+              </li>
+          </>)}
+        </ul>
+        </div>
+        </div>
      </nav>
    
   )
