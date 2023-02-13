@@ -165,8 +165,8 @@ const Jobs = () => {
                       <td>{job.application_date}</td>
                       <td>{job.skills}</td>
                       <td>{job.status}</td>
-                      <td> <button onClick={() => handleEdit(job._id)} className="editJobButton"><i class="fa-solid fa-pen-to-square"></i> </button> </td>
-                      <td> <button onClick={() => handleDelete(job._id)} className="deleteJobButton"><i class="fa-solid fa-trash"></i></button></td>
+                      <td> <button onClick={() => handleEdit(job._id)} className="editJobButton"><i className="fa-solid fa-pen-to-square"></i> </button> </td>
+                      <td> <button onClick={() => handleDelete(job._id)} className="deleteJobButton"><i className="fa-solid fa-trash"></i></button></td>
                     </tr>
                   ))}
                </tbody>
