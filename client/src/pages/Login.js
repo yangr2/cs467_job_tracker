@@ -25,7 +25,7 @@ const Login = () => {
         }).catch((error) => {
             console.log(error)
         })
-    });
+    },[]);
 
     const handleSubmit = (e) => {
         e.preventDefault()

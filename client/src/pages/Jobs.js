@@ -31,13 +31,16 @@ const Jobs = () => {
 
     const [jobs, setJobs] = useState([])
 
-   const fetchJobs = () => {
-      const token = localStorage.getItem('jwtToken')
+
+    useEffect(() => {
+      const fetchJobs = async () => {
+        const token = localStorage.getItem('jwtToken')
       Axios.defaults.headers.common['Authorization'] = token;
       Axios.get(process.env.REACT_APP_API_ADDRESS + "/api/userinfo/auth")
       .then((response) => {
           if(response.data.loggedIn) {
               setUser(response.data)
+              
               Axios.get(process.env.REACT_APP_API_ADDRESS + "/api/jobs/" + response.data.userId)
               .then((response) => {
                 setJobs(response.data)
@@ -51,10 +54,10 @@ const Jobs = () => {
       }).catch((error) => {
           console.log(error)
       })
-    }
-    useEffect(() => {
+      }
       fetchJobs()
-    }, [jobs])
+    },[])
+
 
      // Handle Submit for Add Job Form
      const handleSubmit = async (e) => {
@@ -82,6 +85,13 @@ const Jobs = () => {
               setDateApplied('')
               setSkills('')
               setStatus('')
+
+              Axios.get(process.env.REACT_APP_API_ADDRESS + "/api/jobs/" + user.userId)
+              .then((response) => {
+                setJobs(response.data)
+              }).catch((error) => {
+                  console.log(error)
+              })
 
           }).catch((error) => {
             alert(JSON.stringify(error.response.data.message))
@@ -121,6 +131,13 @@ const Jobs = () => {
         }).then((response) => {
             alert("Job edited successfully")
 
+            Axios.get(process.env.REACT_APP_API_ADDRESS + "/api/jobs/" + user.userId)
+            .then((response) => {
+              setJobs(response.data)
+            }).catch((error) => {
+                console.log(error)
+            })
+
         }).catch((error) => {
           alert(JSON.stringify(error.response.data.message))
         })
@@ -130,6 +147,13 @@ const Jobs = () => {
     const handleDelete =  (id) => {
       Axios.delete(process.env.REACT_APP_API_ADDRESS + "/api/jobs/" + user.userId + "/" + id).then((response) => {
             alert(JSON.stringify(response.data.message))
+
+            Axios.get(process.env.REACT_APP_API_ADDRESS + "/api/jobs/" + user.userId)
+            .then((response) => {
+              setJobs(response.data)
+            }).catch((error) => {
+                console.log(error)
+            })
         }).catch((error) => {
           alert(JSON.stringify(error.response.data.message))
         })
