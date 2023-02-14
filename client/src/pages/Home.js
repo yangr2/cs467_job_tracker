@@ -10,7 +10,7 @@ const Home = () => {
             <div className="homeTextContainer">
               <h1>Organize your job <br/> applications. <br/> Never lose track again.</h1>
               
-              <p> Too many job applications to count? Optimize and organize <br/> your job application to say on top of your job hunt. </p>
+              <p> Too many job applications to count? Optimize and organize <br/> your job application to stay on top of your job hunt. </p>
 
               <Link to="/register"> <button className="homeBtn"> SIGN UP FOR FREE</button> </Link>
             </div>
