@@ -116,6 +116,10 @@ code {
   margin-left: 30px;
 }
 
+.navLogo h1{
+  text-decoration: none;
+  color:black;
+}
 .navMenu {
   text-align: center;
   margin-right: 2rem;
@@ -201,8 +205,8 @@ code {
   left: 0;
   right: 0;
   margin: auto;
-  width: 1000px;
-  height: 500px;
+  width: 1300px;
+  height: 600px;
 }
 
 .addJobBtn{
@@ -315,9 +319,9 @@ table {
   right:0;
   bottom: 0;
   left: 0;
-  min-width: 1200px;
+  min-width: 1400px;
   margin: auto;
-  width: 1200px;
+  width: 1400px;
   height: 500px;
 }
 .homeImg{
