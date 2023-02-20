@@ -309,6 +309,83 @@ table {
   cursor:pointer;
 }
 
-.editJobButton i , .deleteJobButton i{
+.editJobButton i, .deleteJobButton i{
   font-size: 15px;
+}
+
+
+/* Styling for Contacts Page */
+#contacts-page {
+  background-color: #e0f0f9;
+  height: 100vh;
+}
+
+#contacts-page > .navBar {
+  background-color: #e0f0f9;
+}
+
+.contacts-add-new {
+  width: 70%;
+  margin: 3rem auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.contacts-add-new h3 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.add-contact-btn {
+  background-color: white;
+  color:#676565;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  padding: 1rem;
+}
+
+.contacts-table {
+  width: 70%;
+  margin: 0 auto;
+  border-collapse: separate;
+  border-spacing: 0 2rem;
+}
+
+.contacts-table th {
+  font-weight: 350;
+}
+
+.contacts-table tbody tr {
+  text-align: center;
+  background-color: white;
+}
+
+.contacts-table tbody td {
+  padding: 1.5rem;
+}
+
+.contacts-table tbody td:first-child {
+  border-top-left-radius: 10px; 
+  border-bottom-left-radius: 10px;
+}
+
+.contacts-table tbody td:last-child {
+  border-bottom-right-radius: 10px; 
+  border-top-right-radius: 10px; 
+}
+
+.edit-contact-btn, .delete-contact-btn, .linkedin-btn, .twitter-btn {
+  border: none;
+  background-color: white;
+  cursor:pointer;
+}
+
+.edit-contact-btn i, .delete-contact-btn i {
+  font-size: 1.3rem;
+}
+
+.linkedin-btn i, .twitter-btn i {
+  font-size: 1.5rem;
 }
