@@ -54,6 +54,25 @@ const validateRequestData = (req) => {
     return {isValid:true};
 }
 
+// @route GET api/profile/user/:user_id
+// @description Get user info for a single user id
+// @access private
+router.get('/user/:user_id', async (req, res) => {
+    const authData = authUser(req);
+    if (!authData.loggedIn || authData.userId !== req.params.user_id) {
+        // Skip token check for now until front end finish
+        //return res.status(401).json({ message: "Request Unauthorize"});
+    }
+    try {
+        const user = await User.find({'_id': req.params.user_id})
+        res.json(user);
+
+    } catch (error) {
+        res.status(500).json({ error: "Could not get user info details" });
+    }
+});
+
+
 // @route GET api/profile/:user_id
 // @description Get profile for a single user id
 // @access private
@@ -145,7 +164,16 @@ router.put('/:user_id/:id', async (req, res) => {
         }
 
         let result = await Profile.findOneAndReplace({_id: req.params.id}, body);
-      
+    
+        // update user's name in User Model
+        User.findById(req.params.user_id, function(err,docs){
+            if(err){
+                console.log(err)
+            }else{
+                docs.name = body.name;
+                docs.save()
+            }
+        })
         res.status(200).json({message: 'Profile Updated Successfully!'});
     } catch (error) {
         res.status(500).json(error);
