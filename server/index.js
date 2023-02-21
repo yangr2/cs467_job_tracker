@@ -7,9 +7,11 @@ const session = require('express-session');
 const registerUsers = require('./routes/api/registerUsers');
 const loginUsers = require('./routes/api/loginUsers');
 const userInfo = require('./routes/api/userInfo');
-
+const profile = require('./routes/api/profile');
+const user = require('./routes/api/user')
 const jobs = require('./routes/api/jobs');
 const contacts = require('./routes/api/contacts');
+
 
 const app = express();
 
@@ -38,6 +40,8 @@ app.use('/api/registerUsers', registerUsers);
 app.use('/api/loginUsers', loginUsers);
 app.use('/api/userInfo', userInfo);
 app.use('/api/jobs', jobs);
+app.use('/api/profile', profile)
+app.use('/api/user', user)
 app.use('/api/contacts', contacts);
 
 const port = process.env.PORT || 8080;

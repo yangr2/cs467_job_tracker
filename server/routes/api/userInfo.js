@@ -12,6 +12,7 @@ router.get('/auth', async (req, res) => {
             loggedIn: true,
             userId: data.userId,
             email: data.email,
+            name: data.name,
         });
       } else {
         return res.status(200).json({

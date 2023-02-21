@@ -37,7 +37,7 @@ const Navbar = () => {
 
       <div className="navContainer">
         <div className="navLogo">
-        <h1> Job Tracker</h1>
+        <Link to="/"> <h1> Job Tracker</h1> </Link>
         </div>
         <div className="navMenuContainer">
         <ul className="navMenu">

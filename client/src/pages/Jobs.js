@@ -40,7 +40,7 @@ const Jobs = () => {
       .then((response) => {
           if(response.data.loggedIn) {
               setUser(response.data)
-              
+              console.log(response.data)
               Axios.get(process.env.REACT_APP_API_ADDRESS + "/api/jobs/" + response.data.userId)
               .then((response) => {
                 setJobs(response.data)
@@ -77,7 +77,6 @@ const Jobs = () => {
           status: status,
           }).then((response) => {
               alert("Job created successfully")
-
               setJobTitle('')
               setCompany('')
               setJobType('')
