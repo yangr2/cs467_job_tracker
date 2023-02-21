@@ -20,7 +20,6 @@ const Contacts = () => {
                 
                 Axios.get(process.env.REACT_APP_API_ADDRESS + "/api/contacts/" + response.data.userId)
                 .then((response) => {
-                    console.log(response.data)
                     setContacts(response.data)
                 }).catch((error) => {
                     console.log(error)
@@ -65,8 +64,12 @@ const Contacts = () => {
                                 <td>{contact.phone}</td>
                                 <td>{contact.email}</td>
                                 <td>
-                                    <button className="linkedin-btn"><i class="fa-brands fa-linkedin"></i></button>
-                                    <button className="twitter-btn"><i class="fa-brands fa-twitter"></i></button>
+                                    <button className="linkedin-btn" onClick={()=> window.open(contact.linkedin ? contact.linkedin : "https://linkedin.com")}>
+                                        <i className="fa-brands fa-linkedin"></i>
+                                    </button>
+                                    <button className="twitter-btn" onClick={()=> window.open(contact.twitter ? contact.twitter : "https://twitter.com")}>
+                                        <i className="fa-brands fa-twitter"></i>
+                                    </button>
                                 </td>
                                 <td> 
                                     <button className="edit-contact-btn"><i className="fa-solid fa-pen-to-square"></i></button>
@@ -76,6 +79,38 @@ const Contacts = () => {
                         ))}
                     </tbody>
                 </table>
+
+            <div className="add-new-contact">
+                <form className="contact-form">
+                    <h3 className="contact-form-title">Add a New Contact</h3>
+                    <label>First Name</label>
+                    <input type="text"/>
+                    <label>Last Name</label>
+                    <input type="text"/>
+                    <br/>
+
+                    <label>Company</label>
+                    <input type="text"/>
+                    <br/>
+
+                    <label>Phone</label>
+                    <input type="text"/>
+                    <label>Email</label>
+                    <input type="text"/>
+                    <br/>
+
+                    <label>Linkedin</label>
+                    <input type="text"/>
+                    <label>Twitter</label>
+                    <input type="text"/>
+                    <br/>
+
+                    <button> ADD CONTACT </button>
+                    <button> CANCEL </button>
+                </form>
+            </div>
+
+
         </div>
     );
 }

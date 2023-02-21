@@ -389,3 +389,26 @@ table {
 .linkedin-btn i, .twitter-btn i {
   font-size: 1.5rem;
 }
+
+.add-new-contact {
+  position: fixed;
+  top: 25vh;
+  left: 25%;
+  width: 50%;
+  height: 50%;
+  background-color: #3073a4;
+  padding: 1rem;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  color: white;
+  display: flex;
+}
+
+.contact-form {
+  margin: 0 auto;
+}
+
+.contact-form-title {
+  font-size: 1.5rem;
+  text-align: center;
+}
