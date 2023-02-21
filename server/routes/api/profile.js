@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
+const mongoose = require('mongoose');
 
 // load Profile and User models
 const Profile = require('../../models/Profile')
@@ -134,17 +135,23 @@ router.put('/:user_id/:id', async (req, res) => {
         // Assign user id to body
         const body = req.body;
         body.user_id = req.params.user_id;
+        body._id = req.params.id
+
+        // Error Validation checking
+        if(!mongoose.Types.ObjectId.isValid(body.user_id)){
+            return res.status(404).json({message: 'Error: User does not exist'})
+        }
+
+        if(!mongoose.Types.ObjectId.isValid(body._id)){
+            return res.status(404).json({message: 'Error: Profile does not exist'})
+        }
 
         // Add profile id in for check profile is exist or not
         const checkExitBody = {};
         checkExitBody._id = req.params.id;
         checkExitBody.user_id = req.params.user_id;
 
-        const exist = await Profile.findOne({'user_id': req.params.user_id });
-        if (!exist) {
-            return res.status(401).json({ message: "Profile does not exist"});
-        }
-
+       
         let result = await Profile.findOneAndReplace({_id: req.params.id}, body);
     
         // update user's name in User Model
