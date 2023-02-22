@@ -205,8 +205,8 @@ code {
   left: 0;
   right: 0;
   margin: auto;
-  width: 1300px;
-  height: 600px;
+  width: 1000px;
+  height: 500px;
 }
 
 .addJobBtn{
@@ -297,6 +297,53 @@ table {
   background-color: white;
   cursor:pointer;
 
+}
+
+.editJobButton, .deleteJobButton{
+  border: none;
+  background-color: white;
+  cursor:pointer;
+}
+
+.editJobButton i , .deleteJobButton i{
+  font-size: 15px;
+}
+
+/* styling for home page */
+
+.homeContainer{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: absolute;
+  top:0;
+  right:0;
+  bottom: 0;
+  left: 0;
+  min-width: 1400px;
+  margin: auto;
+  width: 1400px;
+  height: 500px;
+}
+.homeImg{
+  width:400px;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+}
+
+.homeContainer h1{
+  font-size: 50px;
+}
+
+.homeBtn{
+  background-color: #3073A4;
+  border-radius: 5px;
+  color: white;
+  border:none;
+  cursor:pointer;
+  height: 50px;
+  width: 200px;
+  margin-top: 30px;
 }
 
 /* Profile page */
@@ -407,51 +454,4 @@ table {
 .educationContent {
   text-align: left;
   padding-left: 50px;
-}
-
-.editJobButton, .deleteJobButton{
-  border: none;
-  background-color: white;
-  cursor:pointer;
-}
-
-.editJobButton i , .deleteJobButton i{
-  font-size: 15px;
-}
-
-/* styling for home page */
-
-.homeContainer{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  position: absolute;
-  top:0;
-  right:0;
-  bottom: 0;
-  left: 0;
-  min-width: 1400px;
-  margin: auto;
-  width: 1400px;
-  height: 500px;
-}
-.homeImg{
-  width:400px;
-  text-align: center;
-  display: block;
-  margin: 0 auto;
-}
-
-.homeContainer h1{
-  font-size: 50px;
-}
-
-.homeBtn{
-  background-color: #3073A4;
-  border-radius: 5px;
-  color: white;
-  border:none;
-  cursor:pointer;
-  height: 50px;
-  width: 200px;
-  margin-top: 30px;
 }
