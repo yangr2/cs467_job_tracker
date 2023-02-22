@@ -17,6 +17,7 @@ router.post('/login', async (req, res) => {
 	}
     try {
         const user = await User.findOne({ email });
+        
         // If a user was found
         if (user) {
             const validPassword = bcrypt.compareSync(password, user.password);
@@ -27,7 +28,7 @@ router.post('/login', async (req, res) => {
 
                 // Add JWT to backend
                 const token = jwt.sign(
-                    { email: user.email, userId: user.id },
+                    { email: user.email, userId: user.id, name: user.name},
                     "thisIsMySecret!",
                     { expiresIn: "1h" }
                 );
@@ -36,6 +37,7 @@ router.post('/login', async (req, res) => {
                     expiresIn: 3600,
                     userId: user.id,
                     email: user.email,
+                    name: user.name,
                 });
             }
             else {

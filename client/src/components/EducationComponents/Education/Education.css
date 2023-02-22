@@ -1,0 +1,43 @@
+.eduCard {
+    background-color: #0C2D48;
+
+    /* background-color: #145DA0; */
+    /* opacity: 0.3; */
+    color: white;
+    border-radius: 25px;
+    margin: 10px;
+    width: 75%;
+    text-align: left;
+    padding: 10px 20px 30px 20px;
+
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    left: 25px;
+    /* justify-content: space-between; */
+}
+
+.eduTextContent {
+    padding-left: 50px;
+    top: 10px;
+    /* z-index: 100; */
+}
+
+.buttonsContainer {
+    display: flex;
+    /* padding: 20px; */
+    flex-direction: row;
+    /* position: absolute; */
+    right: 10px;
+    /* padding-left: 160px; */
+}
+
+.addButton {
+    padding-left: 20px;
+    padding-right: 60px;
+}
+
+.editButton {
+    padding-left: 20px;
+    padding-right: 20px;
+}
