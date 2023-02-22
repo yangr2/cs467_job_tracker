@@ -382,6 +382,7 @@ table {
   border-radius: 0.5rem;
   font-size: 1.2rem;
   padding: 1rem;
+  cursor: pointer;
 }
 
 .contacts-table {
@@ -470,4 +471,5 @@ table {
   font-size: 1rem;
   padding: 1rem;
   margin: 1rem auto;
+  cursor: pointer;
 }
