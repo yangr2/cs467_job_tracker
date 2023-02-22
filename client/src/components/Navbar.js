@@ -21,7 +21,7 @@ const Navbar = () => {
       }).catch((error) => {
           console.log(error)
       })
-  });
+  },[]);
 
   const username = user?.email
 
@@ -37,24 +37,33 @@ const Navbar = () => {
 
       <div className="navContainer">
         <div className="navLogo">
-        <h1> Job Tracker</h1>
+        <Link to="/"> <h1> Job Tracker</h1> </Link>
         </div>
         <div className="navMenuContainer">
         <ul className="navMenu">
-          <li className="navItem">
-          <Link className="homeButton" to="/">HOME</Link>
-          </li>
-          <li className="navItem">
-          <Link className="jobButton"to="/jobs">JOBS</Link>
-          </li>
+         
+          {username && (
+            <>
+             <li className="navItem">
+              <Link className="homeButton" to="/">HOME</Link>
+             </li>
+
+             <li className="navItem">
+              <Link className="jobButton"to="/jobs">JOBS</Link>
+             </li>
+
+             <li className="navItem">
+              <Link className="profileButton" to="/profile">PROFILE</Link>
+            </li>
+            </>
+          )}
+         
           <li className="navItem">
             <Link className="profileButton" to="/profile">PROFILE</Link>
           </li>
           {/* If a user is not logged in, display login & register button */}
-
           {!username && (
           <>
-              
               <li className="navItem">
               <div className="loginButtonContainer">
               <Link className="loginButton" to="/login"> LOGIN</Link>

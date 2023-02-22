@@ -1,10 +1,10 @@
 import Navbar from "../components/Navbar"
-import { useState , useContext } from 'react'
+import { useState , useContext ,useEffect } from 'react'
 import Axios from 'axios'
 import { AuthContext } from "../context/AuthUser";
 
 const Jobs = () => {
-    const {user} = useContext(AuthContext)
+    const {user, setUser} = useContext(AuthContext)
 
     // UseStates for modal boxes for Add Job & Edit Modal
     const [addModal, setAddModal] = useState(false)
@@ -27,7 +27,38 @@ const Jobs = () => {
     const [editDateApplied, setEditDateApplied] = useState('')
     const [editSkills, setEditSkills] = useState('')
     const [editStatus, setEditStatus] = useState('')
-    
+    const [editID, setEditID] = useState('')
+
+    const [jobs, setJobs] = useState([])
+
+
+    useEffect(() => {
+      const fetchJobs = async () => {
+        const token = localStorage.getItem('jwtToken')
+      Axios.defaults.headers.common['Authorization'] = token;
+      Axios.get(process.env.REACT_APP_API_ADDRESS + "/api/userinfo/auth")
+      .then((response) => {
+          if(response.data.loggedIn) {
+              setUser(response.data)
+              console.log(response.data)
+              Axios.get(process.env.REACT_APP_API_ADDRESS + "/api/jobs/" + response.data.userId)
+              .then((response) => {
+                setJobs(response.data)
+              }).catch((error) => {
+                  console.log(error)
+              })
+          }
+          if(!response.data.loggedIn){
+            setUser(null)
+          }
+      }).catch((error) => {
+          console.log(error)
+      })
+      }
+      fetchJobs()
+    },[])
+
+
      // Handle Submit for Add Job Form
      const handleSubmit = async (e) => {
       e.preventDefault()
@@ -36,48 +67,95 @@ const Jobs = () => {
       if(!jobTitle || !company || !jobType || !location || !dateApplied || !skills || !status){
           alert("Missing Field, Please fill out all fields")
       }else{
+        Axios.post(process.env.REACT_APP_API_ADDRESS + "/api/jobs/" + user.userId ,{
+          job_title: jobTitle,
+          company: company,
+          job_type: jobType,
+          location: location,
+          application_date: dateApplied,
+          skills: skills,
+          status: status,
+          }).then((response) => {
+              alert("Job created successfully")
+              setJobTitle('')
+              setCompany('')
+              setJobType('')
+              setLocation('')
+              setDateApplied('')
+              setSkills('')
+              setStatus('')
 
-      Axios.post(process.env.REACT_APP_API_ADDRESS + "/api/jobs/" + user.userId ,{
-        job_title: jobTitle,
-        company: company,
-        job_type: jobType,
-        location: location,
-        application_date: dateApplied,
-        skills: skills,
-        status: status,
+              Axios.get(process.env.REACT_APP_API_ADDRESS + "/api/jobs/" + user.userId)
+              .then((response) => {
+                setJobs(response.data)
+              }).catch((error) => {
+                  console.log(error)
+              })
+
+          }).catch((error) => {
+            alert(JSON.stringify(error.response.data.message))
+          })
+      }
+    }
+
+     // Handler for Editing Jobs (autofill edit input fields)
+     const handleEdit = (id) => {
+      setEditModal(true)
+      const editJobs = jobs.find(job => (job._id === id))
+        if(editJobs){
+            setEditJobTitle(editJobs.job_title)
+            setEditCompany(editJobs.company)
+            setEditLocation(editJobs.location)
+            setEditDateApplied(editJobs.application_date)
+            setEditSkills(editJobs.skills)
+            setEditJobType(editJobs.job_type)
+            setEditStatus(editJobs.status)
+            setEditID(editJobs._id)
+        }
+    }
+
+    // Handler for submitting edited job posts
+    const editJobHandler = async (e) => {
+      e.preventDefault()
+      setEditModal(false)
+
+      Axios.put(process.env.REACT_APP_API_ADDRESS + "/api/jobs/" + user.userId + "/" + editID,{
+        job_title: editJobTitle,
+        company: editCompany,
+        job_type: editJobType,
+        location: editLocation,
+        application_date: editDateApplied,
+        skills: editSkills,
+        status: editStatus,
         }).then((response) => {
-            console.log(response.data)
-            alert("Job created successfully")
+            alert("Job edited successfully")
 
-            setJobTitle('')
-            setCompany('')
-            setJobType('')
-            setLocation('')
-            setDateApplied('')
-            setSkills('')
-            setStatus('')
+            Axios.get(process.env.REACT_APP_API_ADDRESS + "/api/jobs/" + user.userId)
+            .then((response) => {
+              setJobs(response.data)
+            }).catch((error) => {
+                console.log(error)
+            })
 
         }).catch((error) => {
           alert(JSON.stringify(error.response.data.message))
         })
-      }
-    }
-
-     // Handler for Editing Jobs
-     const handleEdit = () => {
-      setEditModal(true)
-     
-    }
-
-    // Handler for submitting edited job posts
-    const editJobHandler = () => {
-      setEditModal(false)
-
     }
 
     // Handler for deleting job
-    const handleDelete =  () => {
-      console.log("Successfully deleted")
+    const handleDelete =  (id) => {
+      Axios.delete(process.env.REACT_APP_API_ADDRESS + "/api/jobs/" + user.userId + "/" + id).then((response) => {
+            alert(JSON.stringify(response.data.message))
+
+            Axios.get(process.env.REACT_APP_API_ADDRESS + "/api/jobs/" + user.userId)
+            .then((response) => {
+              setJobs(response.data)
+            }).catch((error) => {
+                console.log(error)
+            })
+        }).catch((error) => {
+          alert(JSON.stringify(error.response.data.message))
+        })
     }
     
   return (
@@ -89,7 +167,7 @@ const Jobs = () => {
               <button className="addJobBtn" onClick={() => {setAddModal(true)}}> + Add New Job</button>
               <table>
                 <thead>
-                <tr>
+                  <tr>
                       <th>Job Title</th>
                       <th>Company</th>
                       <th>Job Type</th>
@@ -100,25 +178,23 @@ const Jobs = () => {
                       <th></th>
                       <th></th>
                   </tr>
-
                 </thead>
                   
-                  <tbody>
-                  <tr>
-                      <td> Software Engineer</td>
-                      <td> ABC Company</td>
-                      <td> Full-Time</td>
-                      <td>Los Angeles, CA</td>
-                      <td>01-01-2023</td>
-                      <td>HTML,CSS,JavaScript, Node.js, Express.js</td>
-                      <td>APPLIED</td>
-                      <td> <button onClick={handleEdit}> EDIT</button> </td>
-                      <td> <button onClick={handleDelete}>DELETE</button></td>
-                      </tr>
-
-
-                  </tbody>
-                      
+                <tbody>
+                  {jobs.map((job) => (
+                      <tr key={job._id}>
+                      <td>{job.job_title}</td>
+                      <td>{job.company}</td>
+                      <td>{job.job_type}</td>
+                      <td>{job.location}</td>
+                      <td>{job.application_date}</td>
+                      <td>{job.skills}</td>
+                      <td>{job.status}</td>
+                      <td> <button onClick={() => handleEdit(job._id)} className="editJobButton"><i className="fa-solid fa-pen-to-square"></i> </button> </td>
+                      <td> <button onClick={() => handleDelete(job._id)} className="deleteJobButton"><i className="fa-solid fa-trash"></i></button></td>
+                    </tr>
+                  ))}
+               </tbody>
               </table>
           </div>
 

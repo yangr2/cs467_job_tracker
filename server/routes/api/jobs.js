@@ -22,6 +22,7 @@ const authUser = (req) => {
                 loggedIn: true,
                 userId: data.userId,
                 email: data.email,
+                name: data.name,
             };
         } else {
             return {loggedIn: false};
@@ -65,7 +66,7 @@ router.get('/:user_id', async (req, res) => {
     const authData = authUser(req);
     if (!authData.loggedIn || authData.userId !== req.params.user_id) {
         // Skip token check for now until front end finish
-        // return res.status(401).json({ message: "Request Unauthorize"});
+        return res.status(401).json({ message: "Request Unauthorize"});
     }
     try {
         const jobList  = await Job.find({ 'user_id': req.params.user_id })
@@ -116,7 +117,7 @@ router.post('/:user_id', async (req, res) => {
         // Assign user id to body
         const body = req.body;
         body.user_id = req.params.user_id;
-
+        
         const exist = await Job.findOne(body);
         if (exist) {
             return res.status(401).json({ message: "Job Existed!!."});
