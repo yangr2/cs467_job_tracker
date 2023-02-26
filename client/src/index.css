@@ -181,6 +181,13 @@ code {
   padding: 4px 20px;
   
 }
+
+.contactButton, .homeButton{
+  color: black;
+  padding: 4px 20px;
+  
+}
+
 .loginButton {
   background-color: #FFF;
   box-shadow: inset 0 0 8px 1px #D9D9D9;
@@ -305,12 +312,11 @@ table {
   cursor:pointer;
 }
 
-.editJobButton i , .deleteJobButton i{
+.editJobButton i, .deleteJobButton i{
   font-size: 15px;
 }
 
 /* styling for home page */
-
 .homeContainer{
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -344,4 +350,125 @@ table {
   height: 50px;
   width: 200px;
   margin-top: 30px;
+}
+
+/* Styling for Contacts Page */
+#contacts-page {
+  height: 100vh;
+}
+
+.contacts-add-new {
+  width: 70%;
+  margin: 3rem auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.contacts-add-new h3 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.add-contact-btn {
+  background-color: #3073A4;
+  color:white;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.contacts-table {
+  width: 70%;
+  margin: 0 auto;
+  border-collapse: separate;
+  border-spacing: 0 2rem;
+}
+
+.contacts-table th {
+  font-weight: 350;
+}
+
+.contacts-table tbody tr {
+  text-align: center;
+  background-color: white;
+}
+
+.contacts-table tbody td {
+  border-bottom: 1px solid;
+  border-top: 1px solid;
+  padding: 1.5rem;
+}
+
+.contacts-table tbody td:first-child {
+  border-left: 1px solid;
+  border-top-left-radius: 10px; 
+  border-bottom-left-radius: 10px;
+}
+
+.contacts-table tbody td:last-child {
+  border-right: 1px solid;
+  border-bottom-right-radius: 10px; 
+  border-top-right-radius: 10px; 
+}
+
+.edit-contact-btn, .delete-contact-btn, .linkedin-btn, .twitter-btn {
+  border: none;
+  background-color: white;
+  cursor:pointer;
+}
+
+.edit-contact-btn i, .delete-contact-btn i {
+  font-size: 1.3rem;
+}
+
+.linkedin-btn i, .twitter-btn i {
+  font-size: 1.5rem;
+}
+
+.add-new-contact {
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 500px;
+  height: 600px;
+  background-color: #3073a4;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  color: white;
+  display: flex;
+}
+
+.contact-form {
+  margin: 0 auto;
+}
+
+.contact-form h3 {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.contact-form input {
+  margin-bottom: 1rem;
+  width: 300px;
+}
+
+.add-contact-btn-group {
+  display: flex;
+}
+
+.submit-add-contact, .cancel-add-contact {
+  background-color: white;
+  color:#676565;
+  border: none;
+  border-radius: 0.2rem;
+  font-size: 1rem;
+  padding: 1rem;
+  margin: 1rem auto;
+  cursor: pointer;
 }
