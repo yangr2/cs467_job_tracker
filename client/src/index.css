@@ -354,12 +354,7 @@ table {
 
 /* Styling for Contacts Page */
 #contacts-page {
-  background-color: #e0f0f9;
   height: 100vh;
-}
-
-#contacts-page > .navBar {
-  background-color: #e0f0f9;
 }
 
 .contacts-add-new {
@@ -402,15 +397,19 @@ table {
 }
 
 .contacts-table tbody td {
+  border-bottom: 1px solid;
+  border-top: 1px solid;
   padding: 1.5rem;
 }
 
 .contacts-table tbody td:first-child {
+  border-left: 1px solid;
   border-top-left-radius: 10px; 
   border-bottom-left-radius: 10px;
 }
 
 .contacts-table tbody td:last-child {
+  border-right: 1px solid;
   border-bottom-right-radius: 10px; 
   border-top-right-radius: 10px; 
 }
