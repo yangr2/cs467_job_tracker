@@ -164,7 +164,7 @@ const Jobs = () => {
          <div className="jobsContainer">    
           <div className="jobsTable">
               <h3> My Jobs </h3>
-              <button className="addJobBtn" onClick={() => {setAddModal(true)}}> + Add New Job</button>
+              <button className="addJobBtn" onClick={() => {setAddModal(true)}}> + Add Job</button>
               <table>
                 <thead>
                   <tr>

@@ -223,8 +223,10 @@ code {
   color:white;
   cursor: pointer;
   border: none;
-  width: 110px;
-  height: 30px;
+  width: 120px;
+  height: 35px;
+  border-radius: 5px;
+  font-size: 17px;
 }
 
 .jobsContainer h3{
@@ -232,14 +234,36 @@ code {
   font-size: 25px;
 }
 
-table {
+.jobsContainer table {
   width:100%;
   white-space: nowrap;
   margin-top: 40px;
+  text-align: center;
+  border-collapse: separate;
+  border-spacing: 0 20px;
 }
 
 .jobsTable th {
-  background-color: #E5E7EB;
+ font-size: 18px;
+ padding-bottom: 20px;
+}
+
+.jobsTable  tbody td {
+  border-bottom: 1px solid;
+  border-top: 1px solid;
+  padding: 1.5rem;
+}
+
+.jobsTable td:first-child {
+  border-left: 1px solid black;
+  border-top-left-radius: 10px; 
+  border-bottom-left-radius: 10px;
+}
+
+.jobsTable td:last-child {
+  border-right: 1px solid black;
+  border-bottom-right-radius: 10px; 
+  border-top-right-radius: 10px; 
 }
 
 .cancelModal, .cancelEditModal{
@@ -331,7 +355,7 @@ table {
   height: 500px;
 }
 .homeImg{
-  width:400px;
+  width:550px;
   text-align: center;
   display: block;
   margin: 0 auto;
