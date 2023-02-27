@@ -26,7 +26,7 @@ const ProfileSchema = new mongoose.Schema({
                 required: [true, 'Please enter your degree and field of study']
             },
 
-            years: {
+            education_years: {
                 type: String,
                 required: [true, 'Please enter your school years']
             }
@@ -41,7 +41,7 @@ const ProfileSchema = new mongoose.Schema({
                 type: String,
                 required: [true, 'Please enter the company name']
             },
-            years: {
+            experience_years: {
                 type: String,
                 required: [true, 'Please enter years worked at company']
             },

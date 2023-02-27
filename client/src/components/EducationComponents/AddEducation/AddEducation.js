@@ -44,7 +44,7 @@ function AddEducationModal({ modalOpen, setModalOpen, title, addEducation }) {
 
         addEducation(educationObj);
 
-
+        
     }
 
 

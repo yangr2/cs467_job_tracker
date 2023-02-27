@@ -1,19 +1,10 @@
+/* 
 .experienceContainer {
     display: inline-block;
     height: auto;
-    /* display: flex; */
-    /* height: 200px;  */
-    /* height: 50%; */
     overflow: hidden;
-    /* margin: 20px; */
     width: 70%; 
-    /* background: #0b3c6e; */
-    /* background-color: #0b3c6e; */
-
     background-color: #0a4279;
-
-    /* background: #0C2D48; */
-    /* opacity: 0.9; */
     border-radius: 30px;
     padding: 20px 10px 20px 10px;
     color: white;
@@ -24,7 +15,6 @@
     justify-content: space-between;
     text-align: left;
     padding-left: 70px;
-    /* background-color: #0b3c6e; */
     background-color: #0a4279;
 
 }
@@ -53,8 +43,7 @@
     text-align: left;
     padding-left: 50px;
     display: flex;
-    /* position: absolute; */
     flex-direction: column;
     justify-content: center;
-}
+} */
   

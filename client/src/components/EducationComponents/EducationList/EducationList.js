@@ -6,7 +6,7 @@ import Education from '../Education/Education';
 
 
 
-const EducationList = () => {
+const EducationList = (education) => {
     const [modalOpen, setModalOpen] = useState(false);
     const [educationList, setEducationList] = useState([]);
 
@@ -25,22 +25,18 @@ const EducationList = () => {
             <div className="educationContainer">
                 <div className="headerDiv">
                     <h2>Education</h2>
-                    <div className="addBtnContainer">
-                        <div className="addButton">
-                            <MdAddBox size={25} onClick={() => setModalOpen(true)}/>
-                        </div>
-                        {/* <div className="editButton">
-                            <MdEdit onClick={() => setModalOpen(true)}/>
-                        </div>
-                        <div className="deleteButton">
-                            <MdDelete />
-                        </div> */}
-
-                    </div>
                 </div>
 
                 <div className="educationContent">
-                    {educationList.map((education) => 
+                    <Education educationInfo={education}/>
+                    <div>
+                        <li>{education.school}</li>
+                        <li>{education.degree}</li>
+                        <li>{education.years}</li>
+                    </div>
+
+
+                    {/* {educationList.map((education) => 
                         <Education educationInfo={education}/>
 
                         // console.log(educationList);
@@ -50,18 +46,11 @@ const EducationList = () => {
                         //     <li>{education.degree}</li>
                         // </div>
 
-                    )}
+                    )} */}
 
                 </div>
                 
-                {/* <div className="educationContent">
-                    <article>
-                        <h4>University of School</h4>
-                        <small>Bachelor of Science, Computer Science</small>
-                        <br/>
-                        <small>2011-2015</small>
-                    </article>
-                </div> */}
+
 
                 <AddEducationModal modalOpen={modalOpen} setModalOpen={setModalOpen} title={"Add Education"} addEducation={addEducation}/>
 
