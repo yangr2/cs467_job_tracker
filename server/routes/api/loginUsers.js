@@ -28,7 +28,7 @@ router.post('/login', async (req, res) => {
 
                 // Add JWT to backend
                 const token = jwt.sign(
-                    { email: user.email, userId: user.id , name: user.name },
+                    { email: user.email, userId: user.id , userName: user.name },
                     "thisIsMySecret!",
                     { expiresIn: "1h" }
                 );
@@ -37,7 +37,7 @@ router.post('/login', async (req, res) => {
                     expiresIn: 3600,
                     userId: user.id,
                     email: user.email,
-                    name: user.name,
+                    userName: user.name,
                 });
             }
             else {

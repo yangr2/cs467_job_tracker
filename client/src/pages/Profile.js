@@ -2,7 +2,7 @@ import Navbar from "../components/Navbar"
 import React, { useState , useContext, useEffect } from 'react'
 import Axios from 'axios'
 import { AuthContext } from "../context/AuthUser";
-import { MdEdit, MdDelete, MdAddBox, MdOutlineClose } from "react-icons/md";
+import { MdEdit, MdDelete, MdAddBox, MdOutlineClose, MdEmail, MdMailOutline, MdMail, MdPhone, MdSchool, MdWork } from "react-icons/md";
 
 import Button from "../components/Button";
 import EducationModal from "../components/EducationComponents/AddEducation/AddEducation";
@@ -18,6 +18,7 @@ const Profile = () => {
     // console.log(user);
 
     // UseStates for Add Profile Modal & Edit Profile Modal
+    const [userName, setUserName] = useState('');
     const [addProfileModal, setAddProfileModal] = useState(false);
     const [editProfileModal, setEditProfileModal] = useState(false);
 
@@ -87,7 +88,9 @@ const Profile = () => {
             Axios.get(process.env.REACT_APP_API_ADDRESS + "/api/userinfo/auth")
             .then((response) => {
                 if (response.data.loggedIn) {
+                    console.log("response.data for user: ", response.data)
                     setUser(response.data)
+                    setUserName(response.data.userName)
                     console.log("set user data", user)
 
                     Axios.get(process.env.REACT_APP_API_ADDRESS + "/api/profile/" + response.data.userId)
@@ -257,7 +260,27 @@ const Profile = () => {
             {/* Profile Header */}
             <div className="profileContainer">
                 <div className="profileTextContainer">   
-                    <h3>This is the profile page!</h3>
+                    <h1>Profile</h1>
+                    <div className="usernameText">
+                        { userName ? 
+                            <div>
+                                <h3>{userName}</h3><br/>
+                            </div>
+                            :
+                            <h3></h3>
+                        }
+                    </div>
+                   
+                    { user ? 
+                        <div className="emailHeader">
+                            <div className="emailIconContainer">
+                                <MdMailOutline className="headerEmailIcon" />
+                            </div>
+                            <h5>{user.email}</h5> 
+                        </div>
+                        :
+                        <h5></h5>
+                    }
                 </div>
 
                 <div className="profileBtnContainer">
@@ -277,31 +300,55 @@ const Profile = () => {
                             <h4 className="editProfileText">Edit Profile</h4>
                             </>
                         } 
-                        
-
                     </div>
                 </div>
             </div>
+
 
             {/* Contact Info */}
             <div className="bodyContainer">
                 <div className="firstRowContainer">
                     <div className="contactContainer">
-                        <h2>Contact</h2>
-                        {/* <div className="contactContent"> */}
-                            <small>Phone number:</small><br/>
-                            { profile && profile[0] ?
-                                <small>{profile[0].phone_number}</small>
-                            : 
-                            <small></small>
-                            }
-                        {/* </div> */}
+                        <div className="contactHeaderDiv">
+                            <h2>Contact</h2>
+                        </div>
+                        <div className="contactContent">
+                            <div className="phoneNumber">
+                                <MdPhone className="phoneIcon"/>
+                                <h5>Phone number:</h5>
+                                { profile && profile[0] ?
+                                    <small className="phoneNumberText">{profile[0].phone_number}</small>
+                                : 
+                                <small></small>
+                                }
+                            </div>
+                            
+                            <div className="contactEmail">
+
+                                <div className="contactEmailContent">
+                                    <div className="contactEmailContainer">
+                                        <MdMailOutline className="contactEmailIcon" />
+                                        <h5>Email: </h5>
+                                    </div>
+                                    { user ?
+                                        <small className="contactEmailText">{user.email}</small>
+                                    :
+                                    <small></small>
+                                    }
+
+                                </div>
+                           </div>
+                            
+                        </div>
                     </div>
 
 
                     <div className="educationContainer">
-                        <div className="headerDiv">
-                            <h2>Education</h2>
+                        <div className="educationHeaderDiv">
+                            <div className="eduHeader">
+                                <h2>Education</h2>
+                                <MdSchool size={28} className="schoolIcon"/>
+                            </div>
                         </div>
 
                         <div className="educationContent">
@@ -309,42 +356,39 @@ const Profile = () => {
                                 { profile && profile[0] ?
                                     
                                     <div>
+                                        <div className="school">
+                                            <h4>School:</h4>
+                                            <small>{profile[0].education.school}</small>
+                                        </div>
 
-                                        <li>{profile[0].education.school}</li>
-                                        <li>{profile[0].education.degree}</li>
-                                        <li>{profile[0].education.education_years}</li>
+                                        <div className="degree">
+                                            <h4>Degree:</h4>
+                                            <small>{profile[0].education.degree}</small>
+                                        </div>
+
+                                        <div className="educationYears">
+                                            <h4>Attended:</h4>
+                                            <small>{profile[0].education.education_years}</small>
+                                        </div>
+                                       
                                     </div>
 
                                 :  
                                 <div></div>
                                 }
                             </div>
-
-                            {/* {education.map((education) => 
-                                <Education educationInfo={education}/> */}
-
-                                {/* // console.log(educationList);
-                                // <div>
-                                //     <li>{education.schoolName}</li>
-                                //     <li>{education.date}</li>
-                                //     <li>{education.degree}</li>
-                                // </div> */}
-
-                            {/* )} */}
-
                         </div>
                     </div>
                 </div>
                 
 
-                {/* <EducationList education={profile[0].education}></EducationList> */}
-
-                    {/* <EducationModal modalOpen={modalOpen} setModalOpen={setModalOpen} title={"Add Education"}/> */}
-
                 <div className="secondRowContainer">
                     <div className="experienceContainer">
                         <div className="expHeaderDiv">
-                            <h2>Experience</h2>
+                            <div className="experienceHeader">
+                                <h2>Experience</h2>
+                                <MdWork size={28} className="schoolIcon"/>
+                            </div>
                         </div>
                         <div className="experienceContent">
                             { profile && profile[0] ?
@@ -358,9 +402,26 @@ const Profile = () => {
                             <div></div>
                             }
                         </div>
-                   
                     </div>
+                </div>
                 
+                {/* Third Row - Skills */}
+                <div className="thirdRowContainer">
+                    <div className="skillsContainer">
+                        <div className="skillsHeader">
+                            <h2>Skills</h2>
+                        </div>
+                        <div className="skillsContent">
+                            { profile && profile[0] ? 
+                                <div>
+                                    <article>{profile[0].skills}</article>
+                                </div>
+                            :
+                            <div></div>
+                            }
+
+                        </div>
+                    </div>
                 </div>
         </div>
             
@@ -450,6 +511,7 @@ const Profile = () => {
             </>
         </div>
 
+
         {/* Edit Profile Modal */}
 
         <div>
@@ -535,8 +597,6 @@ const Profile = () => {
             )}
             </>
         </div>
-        
-
         
 
         

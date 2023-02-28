@@ -1,4 +1,4 @@
-/* Profile page */
+/****************** Profile Header *********************/
 
 .profileContainer {
     display: flex;
@@ -7,30 +7,59 @@
     background-color: #3073A4;
     padding-right: 40px;
     padding-left: 60px;
-    padding-bottom: 100px;
-    padding-top: 100px;
+    padding-bottom: 45px;
+    padding-top: 80px;
   }
 
 .profileTextContainer {
     display: flex;
     flex-direction: column;
+    padding-right: 200px;
+    margin: -10px;
+    gap: -20px;
+}
+
+.usernameText {
+    display: flex;
+
+}
+
+.emailHeader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+.headerEmailIcon {
+    padding-left: 30px;
+}
+
+.profileTextContainer h1 {
+    font-size: 50px;
 }
   
-.profileTextContainer h3{
+.profileTextContainer h3 {
     display: inline;
-    font-size: 30px;
-    /* left: 100px; */
-    text-align: center;
-    /* margin-left: 300px; */
+    font-size: 25px;
+    text-align: left;
+    padding-left: 30px;
+    bottom: 50px;
 }
 
+.profileTextContainer h5 {
+    top: -30px;
+    padding-left: 20px;
+    bottom: 100px;
+    font-size: 15px;
+}
+
+/******  Container for Add & Edit Profile Buttons ******/
 .profileBtnContainer {
-    /* display: flex; */
     justify-content: space-between;
-    /* align-items: center; */
-
 }
 
+/* Add Profile Button */ 
 .addProfileBtn {
     display: flex;
     flex-direction: row;
@@ -48,6 +77,7 @@
     padding-right: 5px;
 }
 
+/* Edit Profile Button */
 .editProfileBtn {
     display: flex;
     flex-direction: row;
@@ -66,60 +96,128 @@
     padding-right: 5px;
 }
   
+/* Container for rest of Profile page */
 .pageContainer {
-background-color: #add8e6;
-height: auto;
-overflow: auto;
-position: absolute;
-top: 0; 
-bottom: 0; 
-left: 0; 
-right: 0;
+    background-color: #add8e6;
+    height: auto;
+    overflow: auto;
+    position: absolute;
+    top: 0; 
+    bottom: 0; 
+    left: 0; 
+    right: 0;
 }
   
   
 .bodyContainer {
-height: auto;
-flex-flow: column;
-justify-content: center;
-overflow: hidden;
-padding-bottom: 50px;
+    padding-top: 50px;
+    height: auto;
+    flex-flow: column;
+    justify-content: center;
+    overflow: hidden;
+    padding-bottom: 50px;
 }
   
-/* First Row 
-*/
+/****** First Row - Contact & Education ******/
 .firstRowContainer {
-text-align: center;
-justify-content: center;
-display: flex; 
-flex-direction: row;
+    text-align: center;
+    justify-content: center;
+    display: flex; 
+    flex-direction: row;
 }
 
 .contactContainer {
-display: inline-block;
-height: 200px; 
-margin: 20px;
-width: 20%; 
-background: #7393b3;
+    display: inline-block;
+    height: 200px; 
+    margin: 20px;
+    width: 25%; 
+    background: #7393b3;
+    display: inline-block;
+    height: auto;
+    overflow: hidden;
+    border-radius: 30px;
+    padding: 20px 10px 20px 10px;
+    color: white;
+
 }
+
+.contactHeaderDiv {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    padding-left: 50px;
+}
+
+.contactContent {
+    text-align: left;
+    padding-left: 50px;
+}
+
+.contactContent h5 {
+
+}
+
+.phoneNumber {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.phoneIcon {
+    padding-right: 20px;
+}
+
+.phoneNumberText {
+    padding-left: 30px;
+}
+
+.contactEmailContent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+}
+
+.contactEmailContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+.contactEmailIcon {
+    padding-right: 25px;
+}
+
+.contactEmailText {
+    padding-left: 30px;
+}
+
+
+/****************** First Row - Education Div ****************/
+
 
 .educationContainer {
-display: inline-block;
-height: 200px; 
-margin: 20px;
-width: 40%; 
-background: #7393b3;
+    display: inline-block;
+    height: 200px; 
+    margin: 20px;
+    width: 40%; 
+    background: #7393b3;
+    display: inline-block;
+    height: auto;
+    overflow: hidden;
+    border-radius: 30px;
+    padding: 20px 10px 20px 10px;
+    color: white;
 }
 
 
-
-/* Second Row */
 .secondRowContainer {
-text-align: center;
-justify-content: center;
-justify-items: center;
-display: flex; 
-flex-direction: row;
+    text-align: center;
+    justify-content: center;
+    justify-items: center;
+    display: flex; 
+    flex-direction: row;
 
 }
 
@@ -132,46 +230,69 @@ background: #7393b3;
 text-align: left;
 } */
 
-.headerDiv {
-display: flex;
-justify-content: space-between;
-text-align: left;
-padding-left: 50px;
+.educationHeaderDiv {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    padding-left: 50px;
+}
+
+.eduHeader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.schoolIcon {
+    padding-left: 20px;
 }
 
 .buttonsContainer {
-display: flex;
-justify-content: center;
-padding: 20px;
-padding-left: 70px;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    padding-left: 70px;
 }
 
 .editButton {
-padding-left: 20px;
-padding-right: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .educationContent {
-text-align: left;
-padding-left: 50px;
+    text-align: left;
+    padding-left: 50px;
 }
 
+.school, .degree, .educationYears {
+    display: flex;
+    flex: row;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.school > small {
+    padding-left: 25px;
+}
+
+.degree > small {
+    padding-left: 25px;
+
+}
+
+.educationYears > small {
+    padding-left: 25px;
+
+}
+
+
+/******* Second row - Experience ***********/
 .experienceContainer {
     display: inline-block;
     height: auto;
-    /* display: flex; */
-    /* height: 200px;  */
-    /* height: 50%; */
     overflow: hidden;
-    /* margin: 20px; */
     width: 70%; 
-    /* background: #0b3c6e; */
-    /* background-color: #0b3c6e; */
-
     background-color: #0a4279;
-
-    /* background: #0C2D48; */
-    /* opacity: 0.9; */
     border-radius: 30px;
     padding: 20px 10px 20px 10px;
     color: white;
@@ -187,11 +308,62 @@ padding-left: 50px;
 
 }
 
+.experienceHeader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .experienceContent {
     text-align: left;
     padding-left: 50px;
     display: flex;
     /* position: absolute; */
+    flex-direction: column;
+    justify-content: center;
+}
+
+/*************** Third Row Skills Div ****************/ 
+
+.thirdRowContainer {
+    text-align: center;
+    justify-content: center;
+    justify-items: center;
+    display: flex; 
+    flex-direction: row;
+    margin-top: 30px;;
+}
+
+.skillsContainer {
+    display: inline-block;
+    height: auto;
+    overflow: hidden;
+    width: 70%; 
+    background-color: #0a4279;
+    border-radius: 30px;
+    padding: 20px 10px 20px 10px;
+    color: white;
+}
+
+.skillsHeaderDiv {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    padding-left: 50px;
+}
+
+.skillsHeader {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    padding-left: 70px;
+    background-color: #0a4279;
+}
+
+.skillsContent {
+    text-align: left;
+    padding-left: 50px;
+    display: flex;
     flex-direction: column;
     justify-content: center;
 }
@@ -296,4 +468,3 @@ padding-left: 50px;
     left: -5px;
 }
 
-/*********************** Modal for Edit Profile Form ************************/ 
