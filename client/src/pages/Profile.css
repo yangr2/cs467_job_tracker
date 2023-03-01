@@ -5,6 +5,7 @@
     justify-content: space-around;
     align-items: center;
     background-color: #3073A4;
+    /* background-image: linear-gradient(to bottom right, #114e7a, #82bdd9); */
     padding-right: 40px;
     padding-left: 60px;
     padding-bottom: 45px;
@@ -21,7 +22,6 @@
 
 .usernameText {
     display: flex;
-
 }
 
 .emailHeader {
@@ -29,7 +29,6 @@
     flex-direction: row;
     align-items: center;
 }
-
 
 .headerEmailIcon {
     padding-left: 30px;
@@ -92,9 +91,6 @@
     padding-right: 15px;
 }
 
-.ProfileText {
-    padding-right: 5px;
-}
   
 /* Container for rest of Profile page */
 .pageContainer {
@@ -108,14 +104,13 @@
     right: 0;
 }
   
-  
 .bodyContainer {
     padding-top: 50px;
     height: auto;
     flex-flow: column;
     justify-content: center;
     overflow: hidden;
-    padding-bottom: 50px;
+    padding-bottom: 100px;
 }
   
 /****** First Row - Contact & Education ******/
@@ -126,6 +121,7 @@
     flex-direction: row;
 }
 
+/* Contact Info*/ 
 .contactContainer {
     display: inline-block;
     height: 200px; 
@@ -136,9 +132,8 @@
     height: auto;
     overflow: hidden;
     border-radius: 30px;
-    padding: 20px 10px 20px 10px;
+    padding: 20px 20px 20px 10px;
     color: white;
-
 }
 
 .contactHeaderDiv {
@@ -153,10 +148,7 @@
     padding-left: 50px;
 }
 
-.contactContent h5 {
-
-}
-
+/* Phone number */
 .phoneNumber {
     display: flex;
     flex-direction: row;
@@ -190,6 +182,36 @@
 }
 
 .contactEmailText {
+    padding-left: 30px;
+}
+
+/* For Webisite */ 
+.website {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.websiteIcon {
+    padding-right: 20px;
+}
+
+.websiteText {
+    padding-left: 30px;
+}
+
+/* For LinkedIn */ 
+.linkedIn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.linkedInIcon {
+    padding-right: 20px;
+}
+
+.linkedInText {
     padding-left: 30px;
 }
 
@@ -244,7 +266,7 @@ text-align: left;
 }
 
 .schoolIcon {
-    padding-left: 20px;
+    padding-left: 30px;
 }
 
 .buttonsContainer {
@@ -295,6 +317,7 @@ text-align: left;
     background-color: #0a4279;
     border-radius: 30px;
     padding: 20px 10px 20px 10px;
+    margin-top: 20px;
     color: white;
 }
 
@@ -323,6 +346,18 @@ text-align: left;
     justify-content: center;
 }
 
+.jobTitle, .company, .experienceYears, .description {
+    /* display: flex;
+    flex: row; */
+    align-items: center;
+    padding-left: 20px;
+}
+
+.jobTitle > small, .company > small, .experienceYears > small, .description > small {
+    padding-left: 15px;
+
+}
+
 /*************** Third Row Skills Div ****************/ 
 
 .thirdRowContainer {
@@ -331,7 +366,6 @@ text-align: left;
     justify-items: center;
     display: flex; 
     flex-direction: row;
-    margin-top: 30px;;
 }
 
 .skillsContainer {
@@ -341,8 +375,10 @@ text-align: left;
     width: 70%; 
     background-color: #0a4279;
     border-radius: 30px;
-    padding: 20px 10px 20px 10px;
+    padding: 20px 10px 30px 10px;
     color: white;
+    margin-top: 35px;;
+
 }
 
 .skillsHeaderDiv {
@@ -354,18 +390,24 @@ text-align: left;
 
 .skillsHeader {
     display: flex;
-    justify-content: space-between;
-    text-align: left;
-    padding-left: 70px;
-    background-color: #0a4279;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+
+.skillsIcon {
+    padding-left: 30px;
+
 }
 
 .skillsContent {
     text-align: left;
-    padding-left: 50px;
+    padding-left: 70px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    
 }
   
 

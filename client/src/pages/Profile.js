@@ -2,7 +2,8 @@ import Navbar from "../components/Navbar"
 import React, { useState , useContext, useEffect } from 'react'
 import Axios from 'axios'
 import { AuthContext } from "../context/AuthUser";
-import { MdEdit, MdDelete, MdAddBox, MdOutlineClose, MdEmail, MdMailOutline, MdMail, MdPhone, MdSchool, MdWork } from "react-icons/md";
+import { MdEdit, MdDelete, MdAddBox, MdOutlineClose, MdEmail, MdMailOutline, MdMail, MdPhone, 
+    MdSchool, MdWork, MdOutlineFeed, MdLanguage } from "react-icons/md";
 
 import Button from "../components/Button";
 import EducationModal from "../components/EducationComponents/AddEducation/AddEducation";
@@ -25,6 +26,7 @@ const Profile = () => {
     // UseStates for Adding Profile 
     const [phoneNumber, setPhoneNumber] = useState('');
     const [website, setWebsite] = useState('');
+    const [linkedIn, setLinkedIn] = useState('');
     const [skills, setSkills] = useState('');
     const [education, setEducation] = useState({
         school: '',
@@ -42,6 +44,7 @@ const Profile = () => {
     const [editProfileID, setEditProfileID] = useState('');
     const [editPhoneNumber, setEditPhoneNumber] = useState('');
     const [editWebsite, setEditWebsite] = useState('');
+    const [editLinkedIn, setEditLinkedIn] = useState('');
     const [editSkills, setEditSkills] = useState('');
     const [editEducation, setEditEducation] = useState({
         school: '',
@@ -56,27 +59,6 @@ const Profile = () => {
     });
 
     const [profile, setProfile] = useState(null);
-
-
-
-
-    /******* profileInfo state ********/
-    // const [profileInfo, setProfileInfo] = useState({
-    //     phone_number: "",
-    //     skills: "",
-    //     education: 
-    //         {
-    //         school: "",
-    //         degree: "",
-    //         years: "",
-    //     },
-    //     experience: {
-    //         job_title: "",
-    //         company: "",
-    //         years: "", 
-    //         description: "",
-    //     }
-    // })
 
 
 
@@ -167,6 +149,8 @@ const Profile = () => {
         } else {
             Axios.post(process.env.REACT_APP_API_ADDRESS + "/api/profile/" + user.userId, {
                 phone_number: phoneNumber, 
+                website: website,
+                linkedIn: linkedIn,
                 skills: skills, 
                 education: education, 
                 experience: experience,
@@ -174,9 +158,13 @@ const Profile = () => {
         }).then((response) => {
             alert("Profile created successfully")
             setPhoneNumber('')
+            setWebsite('')
+            setLinkedIn('')
             setSkills('')
             setEducation('')
             setExperience('')
+            setAddProfileModal(false)
+
 
             Axios.get(process.env.REACT_APP_API_ADDRESS + "/api/profile/" + user.userId)
             .then((response) => {
@@ -199,6 +187,8 @@ const Profile = () => {
 
         if (editProfile) {
             setEditPhoneNumber(editProfile.phone_number)
+            setEditWebsite(editProfile.website)
+            setEditLinkedIn(editProfile.linkedIn)
             setEditSkills(editProfile.skills)
             setEditEducation(editProfile.education)
             setEditExperience(editProfile.experience)
@@ -228,11 +218,14 @@ const Profile = () => {
            
         Axios.put(process.env.REACT_APP_API_ADDRESS + "/api/profile/" + user.userId + "/" + editProfileID, {
             phone_number: editPhoneNumber,
+            website: editWebsite,
+            linkedIn: editLinkedIn,
             skills: editSkills,
             education: editEducation,
             experience: editExperience,
         }).then((response) => {
             alert("Profile edited successfully")
+            setEditProfileModal(false)
             
             // console.log("Issue here! ")
             console.log("check user: ", user)
@@ -313,6 +306,7 @@ const Profile = () => {
                             <h2>Contact</h2>
                         </div>
                         <div className="contactContent">
+
                             <div className="phoneNumber">
                                 <MdPhone className="phoneIcon"/>
                                 <h5>Phone number:</h5>
@@ -324,7 +318,6 @@ const Profile = () => {
                             </div>
                             
                             <div className="contactEmail">
-
                                 <div className="contactEmailContent">
                                     <div className="contactEmailContainer">
                                         <MdMailOutline className="contactEmailIcon" />
@@ -335,10 +328,28 @@ const Profile = () => {
                                     :
                                     <small></small>
                                     }
-
                                 </div>
                            </div>
-                            
+
+                           <div className="website">
+                                <MdLanguage className="websiteIcon"/>
+                                <h5>Website:</h5>
+                                { profile && profile[0] ?
+                                    <small className="websiteText">{profile[0].website}</small>
+                                : 
+                                <small></small>
+                                }
+                            </div>
+
+                            <div className="linkedIn">
+                                <MdLanguage className="linkedInIcon"/>
+                                <h5>LinkedIn:</h5>
+                                { profile && profile[0] ?
+                                    <small className="linkedInText">{profile[0].linkedIn}</small>
+                                : 
+                                <small></small>
+                                }
+                            </div>
                         </div>
                     </div>
 
@@ -393,10 +404,25 @@ const Profile = () => {
                         <div className="experienceContent">
                             { profile && profile[0] ?
                                 <div className="">
-                                    <li>{profile[0].experience.job_title}</li>
-                                    <li>{profile[0].experience.company}</li>
-                                    <li>{profile[0].experience.experience_years}</li>
-                                    <li>{profile[0].experience.description}</li>
+                                    <div className="jobTitle">
+                                        <h4>Job Title: </h4>
+                                        <small>{profile[0].experience.job_title}</small>
+                                    </div>
+
+                                    <div className="company">
+                                        <h4>Company:</h4>
+                                        <small>{profile[0].experience.company}</small>
+                                    </div>
+
+                                    <div className="experienceYears">
+                                        <h4>Dates:</h4>
+                                        <small>{profile[0].experience.experience_years}</small>
+                                    </div>
+
+                                    <div className="description">
+                                        <h4>Description:</h4>
+                                        <small>{profile[0].experience.description}</small>
+                                    </div>
                                 </div>
                             :  
                             <div></div>
@@ -408,9 +434,13 @@ const Profile = () => {
                 {/* Third Row - Skills */}
                 <div className="thirdRowContainer">
                     <div className="skillsContainer">
-                        <div className="skillsHeader">
-                            <h2>Skills</h2>
+                        <div className="skillsHeaderDiv">
+                            <div className="skillsHeader">
+                                <h2>Skills</h2>
+                                <MdOutlineFeed size={28} className="skillsIcon" />
+                            </div>
                         </div>
+                        
                         <div className="skillsContent">
                             { profile && profile[0] ? 
                                 <div>
@@ -444,6 +474,18 @@ const Profile = () => {
                             <label htmlFor="phone_number">
                                 Phone Number
                                 <input type="text" id="phone_number" name="phone_number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)}/>
+                            </label>
+
+                            {/* Website form section */}
+                            <label htmlFor="website">
+                                Website
+                                <input type="text" id="website" name="website" value={website} onChange={(e) => setWebsite(e.target.value)}/>
+                            </label>
+
+                            {/* LinkedIn form section */}
+                            <label htmlFor="linkedIn">
+                                LinkedIn
+                                <input type="text" id="linkedIn" name="linkedIn" value={linkedIn} onChange={(e) => setLinkedIn(e.target.value)}/>
                             </label>
 
                             {/* Skills form section */}
@@ -526,10 +568,22 @@ const Profile = () => {
                         <form className="editProfileForm">
                             <h1 className="editProfileFormTitle">Edit Profile</h1>
 
-                            {/* Phone number form section */}
+                            {/* Edit phone number form section */}
                             <label htmlFor="edit_phone_number">
                                 Phone Number
                                 <input type="text" id="edit_phone_number" name="edit_phone_number" value={editPhoneNumber} placeholder={editPhoneNumber} onChange={(e) => setEditPhoneNumber(e.target.value)}/>
+                            </label>
+
+                            {/* Edit Website form section */}
+                            <label htmlFor="edit_website">
+                                Website
+                                <input type="text" id="edit_website" name="edit_website" value={editWebsite} onChange={(e) => setEditWebsite(e.target.value)}/>
+                            </label>
+
+                            {/* Edit LinkedIn form section */}
+                            <label htmlFor="edit_linkedIn">
+                                LinkedIn
+                                <input type="text" id="edit_linkedIn" name="edit_linkedIn" value={editLinkedIn} onChange={(e) => setEditLinkedIn(e.target.value)}/>
                             </label>
 
                             {/* Skills form section */}
