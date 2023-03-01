@@ -1,12 +1,7 @@
 import React, { Children } from 'react';
 import './Button.css';
 
-const buttonTypes = {
-    primary: 'primary',
-    secondary: 'secondary',
-}
-
-function Button({ children, variant="primary", action }) {
+function Button({ children, action }) {
   return (
     <button className="button" type="button" onClick={action}>
         {children}

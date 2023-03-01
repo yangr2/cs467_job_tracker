@@ -5,7 +5,6 @@
     justify-content: space-around;
     align-items: center;
     background-color: #3073A4;
-    /* background-image: linear-gradient(to bottom right, #114e7a, #82bdd9); */
     padding-right: 40px;
     padding-left: 60px;
     padding-bottom: 45px;
@@ -378,9 +377,6 @@
 .addProfileWrapper, .editProfileWrapper {
     position: fixed;
     z-index: 999;
-
-    /* top: 0; 
-    left: 0;  */
     top: 50%; 
     left: 50%; 
     transform: translate(-50%, -50%);
@@ -398,7 +394,6 @@
     position: relative;
     justify-content: center;
     align-items: center;
-    /* background-color: #ecedf6; */
     background-color: #dddff0;
     max-width: 550px;
     width: 90%;
@@ -427,7 +422,6 @@
     outline-style: solid;
     outline: black;
     cursor: pointer;
-    /* z-index: -1; */
 }
 
 .addProfileCloseBtn:hover, .editProfileCloseBtn:hover {
@@ -451,23 +445,27 @@
     height: 90%;
 }
 
+.addProfileForm > h3 {
+    color: hsl(238, 23%, 29%); 
+}
+
 .addProfileForm label, .editProfileForm label {
     font-size: 1.01rem;
-    /* color: #646681;  */
     color: #535572; 
     text-align: left;
 }
 
 .addProfileForm label>input, .editProfileForm label>input {
+    background-color: rgb(247, 245, 245);
+    font-size: 1rem;
     margin-top: 10px;
     margin-bottom: 12px;
     width: 90%;
+    height: 0.5rem;
     padding: 16px;
     border-radius: 0.2rem;
     border: none;
-    background-color: rgb(247, 245, 245);
-    font-size: 1rem;
-    height: 0.5rem;
+
 }
 
 

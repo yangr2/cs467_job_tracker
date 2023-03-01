@@ -6,13 +6,8 @@ import { MdEdit, MdDelete, MdAddBox, MdOutlineClose, MdEmail, MdMailOutline, MdM
     MdSchool, MdWork, MdOutlineFeed, MdLanguage } from "react-icons/md";
 
 import Button from "../components/Button";
-import EducationModal from "../components/EducationComponents/AddEducation/AddEducation";
-import EducationList from "../components/EducationComponents/EducationList/EducationList"
-import ExperienceList from "../components/ExperienceComponents/ExperienceList/ExperienceList";
-
-import AddProfileModal from "../components/AddProfileModal/AddProfileModal";
 import './Profile.css';
-import Jobs from "./Jobs";
+
 
 const Profile = () => {
     const { user, setUser } = useContext(AuthContext);
@@ -95,49 +90,6 @@ const Profile = () => {
         fetchProfile();
     }, [])
 
-    /*
-    //Handler to setProfileInfo state 
-    const handleChange = e => {
-        let data = { ...profileInfo };
-        let name = e.target.name;
-        let val = e.target.value;
-
-        if (name == 'phone_number' || name == 'skills') {
-            data = { ...data, [name]: val };
-        }
-
-        else if (name == 'school' || name == 'degree' || name == 'eduYears') {
-            data = { 
-                ...data,
-                education: {
-                    ...data.education,
-                    [name]: val
-                }
-            };
-        }
-
-        else if (name == 'job_title' || name == 'company' || name == 'years' || name == 'description') {
-            data = {
-                ...data, 
-                experience: {
-                    ...data.experience,
-                    [name]: val
-                }
-            }
-        }
-        setProfileInfo(data);
-    }
-    */
-
-    
-    const handleAddProfile = () => {
-        // console.log("profileInfo", profileInfo);
-        console.log("phoneNumber: ", phoneNumber);
-        console.log("skills: ", skills);
-        console.log("education: ", education);
-        console.log("experience: ", experience);
-
-    }
 
     // Handle Submit for Add Profile Form 
     const handleSubmitProfile = async (e) => {
@@ -164,7 +116,6 @@ const Profile = () => {
             setEducation('')
             setExperience('')
             setAddProfileModal(false)
-
 
             Axios.get(process.env.REACT_APP_API_ADDRESS + "/api/profile/" + user.userId)
             .then((response) => {
@@ -196,25 +147,10 @@ const Profile = () => {
         }
     }
 
-    // Print edited profile
-    const handlePrintEditProfile = () => {
-        // console.log("profileInfo", profileInfo);
-        console.log("Edit phoneNumber: ", editPhoneNumber);
-        console.log("Edited skills: ", editSkills);
-        console.log("Edited education: ", editEducation);
-        console.log("Edit experience: ", editExperience);
-        console.log("user.userId", user.userId)
-        console.log("edit profile id: ", editProfileID)
-
-    }
-
     // Handler for submitting edited profile
     const editProfileHandler = async (e) => {
         e.preventDefault()
         setEditProfileModal(false)
-
-        // console.log("Items to send: ", editPhoneNumber, editSkills, editEducation, editExperience)
-        // console.log({skills: editSkills}),
            
         Axios.put(process.env.REACT_APP_API_ADDRESS + "/api/profile/" + user.userId + "/" + editProfileID, {
             phone_number: editPhoneNumber,
@@ -226,10 +162,6 @@ const Profile = () => {
         }).then((response) => {
             alert("Profile edited successfully")
             setEditProfileModal(false)
-            
-            // console.log("Issue here! ")
-            console.log("check user: ", user)
-
 
             Axios.get(process.env.REACT_APP_API_ADDRESS + "/api/profile/" + user.userId)
             .then((response) => {
@@ -457,7 +389,7 @@ const Profile = () => {
             
 
         {/* Add Profile Modal */}
-
+        
         <div>
             <>
             {addProfileModal && (
@@ -470,6 +402,7 @@ const Profile = () => {
                         <form className="addProfileForm">
                             <h1 className="addProfileFormTitle">Add Profile</h1>
 
+                            <h3>Contact Info</h3>
                             {/* Phone number form section */}
                             <label htmlFor="phone_number">
                                 Phone Number
@@ -635,7 +568,6 @@ const Profile = () => {
 
                             {/* Submit and Cancel Button Container */}
                             <div className="editProfileButtonContainer">
-                                {/* <Button type="submit" variant="primary" action={handlePrintEditProfile}> */}
                                 <Button type="submit" variant="primary" action={editProfileHandler}>
                                     Edit Profile
                                 </Button>
@@ -650,24 +582,7 @@ const Profile = () => {
                 </div>
             )}
             </>
-        </div>
-        
-
-        
-        {/* { profile[0] ?
-             <AddProfileModal modalOpen={modalOpen} setModalOpen={setModalOpen} 
-                title={"Add Profile"}
-                phoneNumber={phoneNumber}
-                skills={skills}
-                education={education}
-                experience={experience}
-
-            /> : 
-            <AddProfileModal modalOpen={modalOpen} setModalOpen={setModalOpen} 
-                title={"Add Profile"} 
-            />
-        } */}
-        
+        </div> 
 
         </div>
     )
