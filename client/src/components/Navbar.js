@@ -55,6 +55,10 @@ const Navbar = () => {
              <li className="navItem">
               <Link className="profileButton" to="/profile">PROFILE</Link>
             </li>
+            
+             <li className="navItem">
+              <Link className="contactButton"to="/contacts">CONTACTS</Link>
+             </li>
             </>
           )}
          

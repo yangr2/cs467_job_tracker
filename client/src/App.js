@@ -5,6 +5,7 @@ import Login from './pages/Login'
 import Signup from './pages/Register'
 import Jobs from './pages/Jobs'
 import Profile from './pages/Profile'
+import Contacts from './pages/Contacts'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/register" element={<Signup />} />
         <Route path="/jobs" element={<Jobs />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/contacts" element={<Contacts />} />
       </Routes>
       </BrowserRouter>
     </div>
