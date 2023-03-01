@@ -1,38 +1,19 @@
 .button {
     display: inline-block;
-    height: auto;
-    padding: 0.8rem 2rem;
+    justify-content: left;
+    align-items: center;
+    padding: 14px 28px;
     border: none;
-    border-radius: 6px;
-    font-weight: 500;
-    font-size: 0.8rem;
-    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.85rem;
     text-transform: capitalize;
     cursor: pointer;
     overflow: hidden; 
-    background-color: #646ff0;
-    color: white;
-    justify-content: left;
-
-
+    background-color: #4650be;
+    color: rgb(254, 254, 254);
 }
 
-.button::selection {
-    color: #585858;
-    font-family: Poppins; 
-    padding: 1rem;
-    border: none;
-    background-color: #cccdde;
-    width: 150px;
-    cursor: pointer;
-}
-
-.button--primary {
-    background-color: #646ff0;
-    color: white;
-}
-
-.button--secondary {
-    background-color: #cccdde;
-    color: #f8f8ff;
+.button:hover {
+    background-color: #8083a1
 }

@@ -163,6 +163,7 @@
     padding-left: 30px;
 }
 
+/* Email */
 .contactEmailContent {
     display: flex;
     flex-direction: row;
@@ -176,7 +177,6 @@
     align-items: center;
 }
 
-
 .contactEmailIcon {
     padding-right: 25px;
 }
@@ -185,7 +185,7 @@
     padding-left: 30px;
 }
 
-/* For Webisite */ 
+/* For Website */ 
 .website {
     display: flex;
     flex-direction: row;
@@ -218,7 +218,6 @@
 
 /****************** First Row - Education Div ****************/
 
-
 .educationContainer {
     display: inline-block;
     height: 200px; 
@@ -232,25 +231,6 @@
     padding: 20px 10px 20px 10px;
     color: white;
 }
-
-
-.secondRowContainer {
-    text-align: center;
-    justify-content: center;
-    justify-items: center;
-    display: flex; 
-    flex-direction: row;
-
-}
-
-/* .expContainer {
-display: inline-block;
-height: 200px; 
-margin: 20px;
-width: 60%; 
-background: #7393b3;
-text-align: left;
-} */
 
 .educationHeaderDiv {
     display: flex;
@@ -267,18 +247,6 @@ text-align: left;
 
 .schoolIcon {
     padding-left: 30px;
-}
-
-.buttonsContainer {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-    padding-left: 70px;
-}
-
-.editButton {
-    padding-left: 20px;
-    padding-right: 20px;
 }
 
 .educationContent {
@@ -299,16 +267,22 @@ text-align: left;
 
 .degree > small {
     padding-left: 25px;
-
 }
 
 .educationYears > small {
     padding-left: 25px;
-
 }
 
 
 /******* Second row - Experience ***********/
+.secondRowContainer {
+    text-align: center;
+    justify-content: center;
+    justify-items: center;
+    display: flex; 
+    flex-direction: row;
+}
+
 .experienceContainer {
     display: inline-block;
     height: auto;
@@ -326,9 +300,7 @@ text-align: left;
     justify-content: space-between;
     text-align: left;
     padding-left: 70px;
-    /* background-color: #0b3c6e; */
     background-color: #0a4279;
-
 }
 
 .experienceHeader {
@@ -341,21 +313,17 @@ text-align: left;
     text-align: left;
     padding-left: 50px;
     display: flex;
-    /* position: absolute; */
     flex-direction: column;
     justify-content: center;
 }
 
 .jobTitle, .company, .experienceYears, .description {
-    /* display: flex;
-    flex: row; */
     align-items: center;
     padding-left: 20px;
 }
 
 .jobTitle > small, .company > small, .experienceYears > small, .description > small {
     padding-left: 15px;
-
 }
 
 /*************** Third Row Skills Div ****************/ 
@@ -378,7 +346,6 @@ text-align: left;
     padding: 20px 10px 30px 10px;
     color: white;
     margin-top: 35px;;
-
 }
 
 .skillsHeaderDiv {
@@ -394,11 +361,8 @@ text-align: left;
     align-items: center;
 }
 
-
-
 .skillsIcon {
     padding-left: 30px;
-
 }
 
 .skillsContent {
@@ -407,71 +371,75 @@ text-align: left;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
 }
   
 
-/******************* Modal for Add Profile Form ************************/ 
+/******************* Modal for Add Profile and Edit Profile Form ************************/ 
 .addProfileWrapper, .editProfileWrapper {
     position: fixed;
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; 
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
+    z-index: 999;
+
+    /* top: 0; 
+    left: 0;  */
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
     display: flex; 
     justify-content: center;
     align-items: center;
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0, 0, 0, 0.45);
+    
 }
 
 .addProfileContainer, .editProfileContainer {
-    background-color: #ecedf6;
-    max-width: 500px;
-    width: 90%;
-    margin: auto;
     display: flex; 
+    position: relative;
     justify-content: center;
     align-items: center;
-    padding: 2rem;
-    border-radius: 8px;
-    position: relative;
-    z-index: 200;
-    height: 70%;
+    /* background-color: #ecedf6; */
+    background-color: #dddff0;
+    max-width: 550px;
+    width: 90%;
+    margin: auto;
+    padding: 2rem 2rem 2rem 3rem;
+    border-radius: 20px;
+    z-index: 300;
+    height: 75%;
     overflow-y: auto;
 }
 
 .addProfileCloseBtn, .editProfileCloseBtn {
-    position: absolute;
-    top: -10px;
-    right: 0;
-    transform: translateY(-100%);
-    font-size: 1.8rem;
-    padding: 0.5rem;
-    border-radius: 4px;
-    background-color: #eee;
-    color: #585858;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: absolute;
+    top: 25px;
+    right: 20px;
+    font-size: 1.8rem;
+    padding: 0.5rem;
+    border-radius: 7px;
+    background-color: rgb(178, 211, 239);
+    color: #4f4c4c;
+    border:#262525;
+    border-radius: 5px;
+    outline-style: solid;
+    outline: black;
     cursor: pointer;
-    transition: 0.3s ease all; 
-    z-index: -1;
-
-
+    /* z-index: -1; */
 }
 
 .addProfileCloseBtn:hover, .editProfileCloseBtn:hover {
-    background-color: #e32525;
-    color: white;
+    background-color: #ac7a7ab5;
+    color: rgb(251, 244, 244);
 }
 
 .addProfileFormTitle, .editProfileFormTitle {
-    color: hsl(236, 13%, 45%); 
-    top: 50px;
-    font-size: 1.4rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
+    color: hsl(238, 23%, 29%); 
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
     text-transform: capitalize;
     text-align: left;
 }
@@ -484,18 +452,20 @@ text-align: left;
 }
 
 .addProfileForm label, .editProfileForm label {
-    font-size: 1.0rem;
-    color: #646681; 
+    font-size: 1.01rem;
+    /* color: #646681;  */
+    color: #535572; 
     text-align: left;
 }
 
 .addProfileForm label>input, .editProfileForm label>input {
-    margin-top: 0.5rem;
-    margin-bottom: 1rem;
+    margin-top: 10px;
+    margin-bottom: 12px;
     width: 90%;
-    padding: 1rem;
+    padding: 16px;
+    border-radius: 0.2rem;
     border: none;
-    background-color: white;
+    background-color: rgb(247, 245, 245);
     font-size: 1rem;
     height: 0.5rem;
 }
@@ -505,8 +475,8 @@ text-align: left;
     display: flex;
     justify-content: flex-start; 
     align-items: center;
-    margin-top: 2rem;
-    gap: 1rem;
     left: -5px;
+    margin-top: 30px;
+    gap: 20px;
 }
 
