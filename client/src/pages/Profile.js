@@ -56,7 +56,6 @@ const Profile = () => {
     const [profile, setProfile] = useState(null);
 
 
-
     // Get the profile page 
     useEffect(() => {
         const fetchProfile = async () => {
@@ -209,21 +208,21 @@ const Profile = () => {
                 </div>
 
                 <div className="profileBtnContainer">
-                    <div className="addProfileBtn">
+                    <div className="addProfileBtn" onClick={() => setAddProfileModal(true)}>
                         <MdAddBox className="addProfileIcon" size={25} onClick={() => setAddProfileModal(true)}/>
                         <h4 className="addProfileText">Add Profile</h4>
                     </div>
-                    <div className="editProfileBtn">
+                    <div className="editProfileBtnDiv">
                         { profile && profile[0] ? 
-                            <>
-                            <MdEdit className="editProfileIcon"onClick={() => handleProfileEdit(profile._id)}/>
-                            <h4 className="editProfileText">Edit Profile</h4> 
-                            </> :
+                            <div className="editProfileButton" onClick={() => handleProfileEdit(profile._id)}>
+                                <MdEdit className="editProfileIcon" onClick={() => handleProfileEdit(profile._id)}/>
+                                <h4 className="editProfileText">Edit Profile</h4> 
+                            </div> :
 
-                            <>
-                            <MdEdit className="editProfileIcon"onClick={() => handleProfileEdit()}/>
-                            <h4 className="editProfileText">Edit Profile</h4>
-                            </>
+                            <div className="editProfileButton" onClick={() => handleProfileEdit()}>
+                                <MdEdit className="editProfileIcon" onClick={() => handleProfileEdit()}/>
+                                <h4 className="editProfileText">Edit Profile</h4>
+                            </div>
                         } 
                     </div>
                 </div>
@@ -330,7 +329,7 @@ const Profile = () => {
                         <div className="expHeaderDiv">
                             <div className="experienceHeader">
                                 <h2>Experience</h2>
-                                <MdWork size={28} className="schoolIcon"/>
+                                <MdWork size={28} className="workIcon"/>
                             </div>
                         </div>
                         <div className="experienceContent">
@@ -389,7 +388,7 @@ const Profile = () => {
             
 
         {/* Add Profile Modal */}
-        
+
         <div>
             <>
             {addProfileModal && (

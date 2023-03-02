@@ -3,11 +3,12 @@
 .profileContainer {
     display: flex;
     justify-content: space-around;
+    gap: 170px;
     align-items: center;
-    background-color: #3073A4;
+    background-color: white;
     padding-right: 40px;
     padding-left: 60px;
-    padding-bottom: 45px;
+    padding-bottom: 10px;
     padding-top: 80px;
   }
 
@@ -30,7 +31,7 @@
 }
 
 .headerEmailIcon {
-    padding-left: 30px;
+    padding-left: 0px;
 }
 
 .profileTextContainer h1 {
@@ -41,7 +42,6 @@
     display: inline;
     font-size: 25px;
     text-align: left;
-    padding-left: 30px;
     bottom: 50px;
 }
 
@@ -62,8 +62,9 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: #e2addace;
-    padding: 0px 15px 0px 10px;
+    background-color: #3073A4;
+    color: white;
+    padding: 5px 30px 7px 25px;
     border-radius: 30px;;
 }
 
@@ -76,24 +77,24 @@
 }
 
 /* Edit Profile Button */
-.editProfileBtn {
+.editProfileButton {
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: #e2addace;
-    padding: 0px 15px 0px 10px;
+    background-color: #3073A4;
+    color: white;
+    padding: 5px 30px 7px 25px;
     border-radius: 30px;;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 .editProfileIcon {
     padding-right: 15px;
 }
 
-  
 /* Container for rest of Profile page */
 .pageContainer {
-    background-color: #add8e6;
+    background-color: white;
     height: auto;
     overflow: auto;
     position: absolute;
@@ -245,7 +246,7 @@
 }
 
 .schoolIcon {
-    padding-left: 30px;
+    padding-left: 10px;
 }
 
 .educationContent {
@@ -298,7 +299,7 @@
     display: flex;
     justify-content: space-between;
     text-align: left;
-    padding-left: 70px;
+    padding-left: 50px;
     background-color: #0a4279;
 }
 
@@ -306,6 +307,10 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+
+.workIcon {
+    padding-left: 10px;
 }
 
 .experienceContent {
@@ -361,7 +366,7 @@
 }
 
 .skillsIcon {
-    padding-left: 30px;
+    padding-left: 10px;
 }
 
 .skillsContent {
