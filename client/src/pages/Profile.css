@@ -1,0 +1,485 @@
+/****************** Profile Header *********************/
+
+.profileContainer {
+    display: flex;
+    justify-content: space-around;
+    gap: 170px;
+    align-items: center;
+    background-color: white;
+    padding-right: 40px;
+    padding-left: 60px;
+    padding-bottom: 10px;
+    padding-top: 80px;
+  }
+
+.profileTextContainer {
+    display: flex;
+    flex-direction: column;
+    padding-right: 200px;
+    margin: -10px;
+    gap: -20px;
+}
+
+.usernameText {
+    display: flex;
+}
+
+.emailHeader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.headerEmailIcon {
+    padding-left: 0px;
+}
+
+.profileTextContainer h1 {
+    font-size: 50px;
+}
+  
+.profileTextContainer h3 {
+    display: inline;
+    font-size: 25px;
+    text-align: left;
+    bottom: 50px;
+}
+
+.profileTextContainer h5 {
+    top: -30px;
+    padding-left: 20px;
+    bottom: 100px;
+    font-size: 15px;
+}
+
+/******  Container for Add & Edit Profile Buttons ******/
+.profileBtnContainer {
+    justify-content: space-between;
+}
+
+/* Add Profile Button */ 
+.addProfileBtn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #3073A4;
+    color: white;
+    padding: 5px 30px 7px 25px;
+    border-radius: 30px;;
+}
+
+.addProfileIcon {
+    padding-right: 15px;
+}
+
+.addProfileText {
+    padding-right: 5px;
+}
+
+/* Edit Profile Button */
+.editProfileButton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #3073A4;
+    color: white;
+    padding: 5px 30px 7px 25px;
+    border-radius: 30px;;
+    margin-top: 15px;
+}
+
+.editProfileIcon {
+    padding-right: 15px;
+}
+
+/* Container for rest of Profile page */
+.pageContainer {
+    background-color: white;
+    height: auto;
+    overflow: auto;
+    position: absolute;
+    top: 0; 
+    bottom: 0; 
+    left: 0; 
+    right: 0;
+}
+  
+.bodyContainer {
+    padding-top: 50px;
+    height: auto;
+    flex-flow: column;
+    justify-content: center;
+    overflow: hidden;
+    padding-bottom: 100px;
+}
+  
+/****** First Row - Contact & Education ******/
+.firstRowContainer {
+    text-align: center;
+    justify-content: center;
+    display: flex; 
+    flex-direction: row;
+}
+
+/* Contact Info*/ 
+.contactContainer {
+    display: inline-block;
+    height: 200px; 
+    margin: 20px;
+    width: 25%; 
+    background: #7393b3;
+    display: inline-block;
+    height: auto;
+    overflow: hidden;
+    border-radius: 30px;
+    padding: 20px 20px 20px 10px;
+    color: white;
+}
+
+.contactHeaderDiv {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    padding-left: 50px;
+}
+
+.contactContent {
+    text-align: left;
+    padding-left: 50px;
+}
+
+/* Phone number */
+.phoneNumber {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.phoneIcon {
+    padding-right: 20px;
+}
+
+.phoneNumberText {
+    padding-left: 30px;
+}
+
+/* Email */
+.contactEmailContent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+}
+
+.contactEmailContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.contactEmailIcon {
+    padding-right: 25px;
+}
+
+.contactEmailText {
+    padding-left: 30px;
+}
+
+/* For Website */ 
+.website {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.websiteIcon {
+    padding-right: 20px;
+}
+
+.websiteText {
+    padding-left: 30px;
+}
+
+/* For LinkedIn */ 
+.linkedIn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.linkedInIcon {
+    padding-right: 20px;
+}
+
+.linkedInText {
+    padding-left: 30px;
+}
+
+
+/****************** First Row - Education Div ****************/
+
+.educationContainer {
+    display: inline-block;
+    height: 200px; 
+    margin: 20px;
+    width: 40%; 
+    background: #7393b3;
+    display: inline-block;
+    height: auto;
+    overflow: hidden;
+    border-radius: 30px;
+    padding: 20px 10px 20px 10px;
+    color: white;
+}
+
+.educationHeaderDiv {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    padding-left: 50px;
+}
+
+.eduHeader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.schoolIcon {
+    padding-left: 10px;
+}
+
+.educationContent {
+    text-align: left;
+    padding-left: 50px;
+}
+
+.school, .degree, .educationYears {
+    display: flex;
+    flex: row;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.school > small {
+    padding-left: 25px;
+}
+
+.degree > small {
+    padding-left: 25px;
+}
+
+.educationYears > small {
+    padding-left: 25px;
+}
+
+
+/******* Second row - Experience ***********/
+.secondRowContainer {
+    text-align: center;
+    justify-content: center;
+    justify-items: center;
+    display: flex; 
+    flex-direction: row;
+}
+
+.experienceContainer {
+    display: inline-block;
+    height: auto;
+    overflow: hidden;
+    width: 70%; 
+    background-color: #0a4279;
+    border-radius: 30px;
+    padding: 20px 10px 20px 10px;
+    margin-top: 20px;
+    color: white;
+}
+
+.expHeaderDiv {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    padding-left: 50px;
+    background-color: #0a4279;
+}
+
+.experienceHeader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.workIcon {
+    padding-left: 10px;
+}
+
+.experienceContent {
+    text-align: left;
+    padding-left: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.jobTitle, .company, .experienceYears, .description {
+    align-items: center;
+    padding-left: 20px;
+}
+
+.jobTitle > small, .company > small, .experienceYears > small, .description > small {
+    padding-left: 15px;
+}
+
+/*************** Third Row Skills Div ****************/ 
+
+.thirdRowContainer {
+    text-align: center;
+    justify-content: center;
+    justify-items: center;
+    display: flex; 
+    flex-direction: row;
+}
+
+.skillsContainer {
+    display: inline-block;
+    height: auto;
+    overflow: hidden;
+    width: 70%; 
+    background-color: #0a4279;
+    border-radius: 30px;
+    padding: 20px 10px 30px 10px;
+    color: white;
+    margin-top: 35px;;
+}
+
+.skillsHeaderDiv {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    padding-left: 50px;
+}
+
+.skillsHeader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.skillsIcon {
+    padding-left: 10px;
+}
+
+.skillsContent {
+    text-align: left;
+    padding-left: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+  
+
+/******************* Modal for Add Profile and Edit Profile Form ************************/ 
+.addProfileWrapper, .editProfileWrapper {
+    position: fixed;
+    z-index: 999;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0, 0, 0, 0.45);
+    
+}
+
+.addProfileContainer, .editProfileContainer {
+    display: flex; 
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    background-color: #dddff0;
+    max-width: 550px;
+    width: 90%;
+    margin: auto;
+    padding: 2rem 2rem 2rem 3rem;
+    border-radius: 20px;
+    z-index: 300;
+    height: 75%;
+    overflow-y: auto;
+}
+
+.addProfileCloseBtn, .editProfileCloseBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 25px;
+    right: 20px;
+    font-size: 1.8rem;
+    padding: 0.5rem;
+    border-radius: 7px;
+    background-color: rgb(178, 211, 239);
+    color: #4f4c4c;
+    border:#262525;
+    border-radius: 5px;
+    outline-style: solid;
+    outline: black;
+    cursor: pointer;
+}
+
+.addProfileCloseBtn:hover, .editProfileCloseBtn:hover {
+    background-color: #ac7a7ab5;
+    color: rgb(251, 244, 244);
+}
+
+.addProfileFormTitle, .editProfileFormTitle {
+    color: hsl(238, 23%, 29%); 
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    text-transform: capitalize;
+    text-align: left;
+}
+
+.addProfileForm, .editProfileForm {
+    width: 100%;
+    text-align: left;
+    overflow-y: auto;
+    height: 90%;
+}
+
+.addProfileForm > h3 {
+    color: hsl(238, 23%, 29%); 
+}
+
+.addProfileForm label, .editProfileForm label {
+    font-size: 1.01rem;
+    color: #535572; 
+    text-align: left;
+}
+
+.addProfileForm label>input, .editProfileForm label>input {
+    background-color: rgb(247, 245, 245);
+    font-size: 1rem;
+    margin-top: 10px;
+    margin-bottom: 12px;
+    width: 90%;
+    height: 0.5rem;
+    padding: 16px;
+    border-radius: 0.2rem;
+    border: none;
+
+}
+
+
+.profileButtonContainer, .editProfileButtonContainer {
+    display: flex;
+    justify-content: flex-start; 
+    align-items: center;
+    left: -5px;
+    margin-top: 30px;
+    gap: 20px;
+}
+
