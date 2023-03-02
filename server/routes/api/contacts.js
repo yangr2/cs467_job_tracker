@@ -53,8 +53,7 @@ const validateRequestData = (req) => {
 router.get('/:user_id', async (req, res) => {
     const authData = authUser(req);
     if (!authData.loggedIn || authData.userId !== req.params.user_id) {
-        // Skip token check for now until front end finish
-        // return res.status(401).json({ message: "Request Unauthorize"});
+        return res.status(401).json({ message: "Request Unauthorize"});
     }
     try {
         const contactList  = await Contact.find({ 'user_id': req.params.user_id })
@@ -71,8 +70,7 @@ router.get('/:user_id', async (req, res) => {
 router.get('/:user_id/:contact_id', async (req, res) => {
     const authData = authUser(req);
     if (!authData.loggedIn || authData.userId !== req.params.user_id) {
-        // Skip token check for now until front end finish
-        // return res.status(401).json({ message: "Request Unauthorize"});
+        return res.status(401).json({ message: "Request Unauthorize"});
     }
     try {
         const contact = await Contact.findOne({
@@ -90,11 +88,9 @@ router.get('/:user_id/:contact_id', async (req, res) => {
 // @description POST single contact details by user_id
 // @access private
 router.post('/:user_id', async (req, res) => {
-    
     const authData = authUser(req);
     if (!authData.loggedIn || authData.userId !== req.params.user_id) {
-        // Skip token check for now until front end finish
-        // return res.status(401).json({ message: "Request Unauthorize"});
+        return res.status(401).json({ message: "Request Unauthorize"});
     }
     // check if request containes all required fields
     try {
@@ -124,11 +120,9 @@ router.post('/:user_id', async (req, res) => {
 // @description edit single contact details by contact_id
 // @access private
 router.put('/:user_id/:contact_id', async (req, res) => {
-    
     const authData = authUser(req);
     if (!authData.loggedIn || authData.userId !== req.params.user_id) {
-        // Skip token check for now until front end finish
-        // return res.status(401).json({ message: "Request Unauthorize"});
+        return res.status(401).json({ message: "Request Unauthorize"});
     }
     try {
         const validateResult = validateRequestData(req);
@@ -167,11 +161,9 @@ router.put('/:user_id/:contact_id', async (req, res) => {
 // @description delete single contact details by id
 // @access private
 router.delete('/:user_id/:contact_id', async (req, res) => {
-    
     const authData = authUser(req);
     if (!authData.loggedIn || authData.userId !== req.params.user_id) {
-        // Skip token check for now until front end finish
-        // return res.status(401).json({ message: "Request Unauthorize"});
+        return res.status(401).json({ message: "Request Unauthorize"});
     }
     try {
         let result = await Contact.findByIdAndRemove(req.params.contact_id);
