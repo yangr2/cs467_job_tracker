@@ -12,7 +12,7 @@ router.get('/auth', async (req, res) => {
             loggedIn: true,
             userId: data.userId,
             email: data.email,
-            name: data.name,
+            userName: data.userName,
         });
       } else {
         return res.status(200).json({

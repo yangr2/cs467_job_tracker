@@ -1,0 +1,19 @@
+.button {
+    display: inline-block;
+    justify-content: left;
+    align-items: center;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: capitalize;
+    cursor: pointer;
+    overflow: hidden; 
+    background-color: #42488d;
+    color: rgb(254, 254, 254);
+}
+
+.button:hover {
+    background-color: #8083a1
+}

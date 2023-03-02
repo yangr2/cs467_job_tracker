@@ -40,13 +40,13 @@ const validateRequestData = (req) => {
         return {isValid:false, message: "Missing school name"};
     } else if (!req.body.education.degree) {
         return {isValid:false, message: "Missing degree and field of study"};
-    } else if (!req.body.education.years) {
+    } else if (!req.body.education.education_years) {
         return {isValid:false, message: "Missing education years"};
     } else if (!req.body.experience.job_title) {
         return {isValid:false, message: "Missing job title"};
     } else if (!req.body.experience.company) {
         return {isValid:false, message: "Missing company name"};
-    } else if (!req.body.experience.years) {
+    } else if (!req.body.experience.experience_years) {
         return {isValid:false, message: "Missing job years"};
     } else if (!req.body.experience.description) {
         return {isValid:false, message: "Missing job description"};
@@ -155,14 +155,14 @@ router.put('/:user_id/:id', async (req, res) => {
         let result = await Profile.findOneAndReplace({_id: req.params.id}, body);
     
         // update user's name in User Model
-        User.findById(req.params.user_id, function(err,docs){
-            if(err){
-                console.log(err)
-            }else{
-                docs.name = body.name;
-                docs.save()
-            }
-        })
+        // User.findById(req.params.user_id, function(err,docs){
+        //     if(err){
+        //         console.log(err)
+        //     }else{
+        //         docs.name = body.name;
+        //         docs.save()
+        //     }
+        // })
         res.status(200).json({message: 'Profile Updated Successfully!'});
     } catch (error) {
         res.status(500).json(error);
